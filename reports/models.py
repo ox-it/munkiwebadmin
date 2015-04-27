@@ -4,6 +4,7 @@ import plistlib
 from xml.parsers.expat import ExpatError
 import base64
 import bz2
+import django.utils.timezone
 
 class Machine(models.Model):
     mac = models.CharField(max_length=17, unique=True, primary_key=True)
@@ -29,7 +30,7 @@ class Machine(models.Model):
 
 class MunkiReport(models.Model):
     machine = models.ForeignKey(Machine)
-    timestamp = models.DateTimeField(default=datetime.now())
+    timestamp = models.DateTimeField(default=django.utils.timezone.now)
     runtype = models.CharField(max_length=64)
     runstate = models.CharField(max_length=16)
     console_user = models.CharField(max_length=64)

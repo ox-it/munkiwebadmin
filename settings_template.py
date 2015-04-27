@@ -133,6 +133,8 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+#   Added for deprecation warning when upgrading to Django 1.8
+    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
 )
 
 if USE_LDAP:
