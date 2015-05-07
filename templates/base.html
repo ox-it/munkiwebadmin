@@ -4,7 +4,6 @@
 <meta content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 {% load static %}
-{% load url from future %}
 <link rel="stylesheet"
   href='{% get_static_prefix %}css/bootstrap.min.css' 
   type="text/css" media="all" />
@@ -64,16 +63,16 @@
       <div class="nav-collapse">
         <ul class="nav" id="mainmenu">
           <li {% if page == 'overview' %} class="active" {% endif %}>
-            <a href="{% url 'reports.views.overview' %}">Overview</a>
+            <a href="{% url 'reports-views-overview' %}">Overview</a>
           </li>
           <li {% if page == 'reports' %} class="active" {% endif %}>
-            <a href="{% url 'reports.views.index' %}">Reports</a>
+            <a href="{% url 'reports-views-index' %}">Reports</a>
           </li>
           <li {% if page == 'catalogs' %} class="active" {% endif %}>
-            <a href="{% url 'catalogs.views.catalog_view' %}">Catalogs</a>
+            <a href="{% url 'catalogs-views-catalog_view' %}">Catalogs</a>
           </li>
           <li {% if page == 'manifests' %} class="active" {% endif %}>
-            <a href="{% url 'manifests.views.index' %}">Manifests</a>
+            <a href="{% url 'manifests-views-index' %}">Manifests</a>
           </li>
           <li class="dropdown {% if page == 'inventory' %}active{% endif %}">
             <a class='dropdown-toggle' href="#" data-toggle='dropdown'>
@@ -81,12 +80,12 @@
                 <b class="caret"></b>
             </a>
             <ul class='dropdown-menu'>
-                <li><a href="{% url 'inventory.views.index' %}">Inventory Clients</a></li>
-                <li><a href="{% url 'inventory.views.items' %}">Inventory items</a></li>
+                <li><a href="{% url 'inventory-views-index' %}">Inventory Clients</a></li>
+                <li><a href="{% url 'inventory-views-items' %}">Inventory items</a></li>
             </ul>
           </li>
           <li {% if page == 'licenses' %} class="active" {% endif %}>
-            <a href="{% url 'licenses.views.index' %}">Licenses</a>
+            <a href="{% url 'licenses-views-index' %}">Licenses</a>
           </li>
         </ul>
         <ul class="nav pull-right">

@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% load url from future %}
 
 {{% block content %}
 <form name='delete_form' action="{% url "manifests.views.delete" manifest_name %}" method="post">

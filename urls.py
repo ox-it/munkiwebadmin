@@ -5,15 +5,17 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.contrib import admin
 admin.autodiscover()
 
-urlpatterns = patterns('',
+from django.contrib.auth import views as authviews
+
+urlpatterns = [
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
     
-    url(r'^login/$', 'django.contrib.auth.views.login', name='login'),
-    url(r'^logout/$', 'django.contrib.auth.views.logout_then_login', name='logout'),
+    url(r'^login/$',  authviews.login, name='login'),
+    url(r'^logout/$', authviews.logout_then_login, name='logout'),
     url(r'^manifest/', include('manifests.urls')),
     url(r'^catalog/', include('catalogs.urls')),
     url(r'^report/', include('reports.urls')),
@@ -23,7 +25,7 @@ urlpatterns = patterns('',
     url(r'^update/', include('reports.urls')),
     url(r'^lookup/', include('reports.urls')),
     url(r'^$', include('reports.urls')),
-)
+]
 # comment out the following if you are serving
 # static files a different way
 urlpatterns += staticfiles_urlpatterns()
