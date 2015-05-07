@@ -162,8 +162,9 @@ INSTALLED_APPS = (
     'reports',
     'catalogs',
     'manifests',
-    'inventory',
-    'licenses',
+    # The following are not used by manana
+    # 'inventory',
+    # 'licenses',
 )
 
 # A sample logging configuration. The only tangible logging

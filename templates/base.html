@@ -74,19 +74,6 @@
           <li {% if page == 'manifests' %} class="active" {% endif %}>
             <a href="{% url 'manifests-views-index' %}">Manifests</a>
           </li>
-          <li class="dropdown {% if page == 'inventory' %}active{% endif %}">
-            <a class='dropdown-toggle' href="#" data-toggle='dropdown'>
-                Inventory
-                <b class="caret"></b>
-            </a>
-            <ul class='dropdown-menu'>
-                <li><a href="{% url 'inventory-views-index' %}">Inventory Clients</a></li>
-                <li><a href="{% url 'inventory-views-items' %}">Inventory items</a></li>
-            </ul>
-          </li>
-          <li {% if page == 'licenses' %} class="active" {% endif %}>
-            <a href="{% url 'licenses-views-index' %}">Licenses</a>
-          </li>
         </ul>
         <ul class="nav pull-right">
             <li id="admin" class="loginlogout">

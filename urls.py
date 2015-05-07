@@ -3,7 +3,6 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
-admin.autodiscover()
 
 from django.contrib.auth import views as authviews
 
@@ -18,14 +17,15 @@ urlpatterns = [
     url(r'^logout/$', authviews.logout_then_login, name='logout'),
     url(r'^manifest/', include('manifests.urls')),
     url(r'^catalog/', include('catalogs.urls')),
+#    url(r'^inventory/', include('inventory.urls')),
+#    url(r'^licenses/', include('licenses.urls')),
     url(r'^report/', include('reports.urls')),
-    url(r'^inventory/', include('inventory.urls')),
-    url(r'^licenses/', include('licenses.urls')),
     # for compatibility with MunkiReport scripts
     url(r'^update/', include('reports.urls')),
     url(r'^lookup/', include('reports.urls')),
     url(r'^$', include('reports.urls')),
 ]
+
 # comment out the following if you are serving
 # static files a different way
 urlpatterns += staticfiles_urlpatterns()
