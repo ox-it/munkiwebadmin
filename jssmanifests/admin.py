@@ -4,7 +4,7 @@ from django import forms
 
 
 # Register your models here.
-from jssmappings.models import JSSComputerAttributeType, JSSComputerAttributeMapping
+from jssmanifests.models import JSSComputerAttributeType, JSSComputerAttributeMapping
 
 class JSSComputerAttributeTypeAdminForm(forms.ModelForm):
 

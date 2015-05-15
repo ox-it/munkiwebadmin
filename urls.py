@@ -17,9 +17,6 @@ urlpatterns = [
     
     url(r'^login/$',  authviews.login, name='login'),
     url(r'^logout/$', authviews.logout_then_login, name='logout'),
-
-    url( r'(?i)^manifest/([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})', xmlviews.manifest, name='xml-manifest'),
-
     url(r'^manifest/', include('manifests.urls')),
     url(r'^catalog/', include('catalogs.urls')),
 #    url(r'^inventory/', include('inventory.urls')),
