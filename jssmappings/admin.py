@@ -4,8 +4,7 @@ from django import forms
 
 
 # Register your models here.
-from jssmappings.models import JSSComputerAttributeType
-
+from jssmappings.models import JSSComputerAttributeType, JSSComputerAttributeMapping
 
 class JSSComputerAttributeTypeAdminForm(forms.ModelForm):
 
@@ -35,9 +34,6 @@ class JSSComputerAttributeTypeAdmin(admin.ModelAdmin):
                                               'api_endpoint'] }),
     ]
 
-    def save(self, *args, **kwargs):
-        super(JSSComputerAttributeType, self).save(*args, **kwargs) 
-
     def get_actions(self, request):
         actions = super(JSSComputerAttributeTypeAdmin, self).get_actions(request)
         if request.user.is_superuser:
@@ -46,5 +42,22 @@ class JSSComputerAttributeTypeAdmin(admin.ModelAdmin):
         return None
 
 
+class JSSComputerAttributeMappingAdmin(admin.ModelAdmin):
+
+    fieldsets = [
+        (None,               {'fields': [ 'jss_computer_attribute_value',
+                                          'jss_computer_attribute_type',
+                                          'jss_computer_attribute_key',
+                                          'manifest_element_type',
+                                          'remove_from_xml',
+                                          'priority',
+                                          'site',
+            ]}),
+        ('Catalog Settings', {'fields': [ 'catalog_name', ] } ),
+        ('Manifest Settings', {'fields': ['manifest_name', ] } ),
+        ('Package Settings', {'fields': ['package_name',
+                                         'package_action'] }),
+    ]
 
 admin.site.register(JSSComputerAttributeType, JSSComputerAttributeTypeAdmin)
+admin.site.register(JSSComputerAttributeMapping, JSSComputerAttributeMappingAdmin)
