@@ -6,7 +6,7 @@ from django.contrib import admin
 
 from django.contrib.auth import views as authviews
 
-from jssmappings import xmlviews
+from jssmanifests import xmlviews
 
 urlpatterns = [
     # Uncomment the admin/doc line below to enable admin documentation:
