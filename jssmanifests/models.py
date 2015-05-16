@@ -4,7 +4,10 @@ from django.db import models
 
 class JSSComputerAttributeType(models.Model):
     label = models.CharField('Type Label', max_length=1024)
-    xpath = models.CharField('XPath for extraction', max_length=1024,blank=True)
+
+    # Data retrieved via a JSS record
+    jss_field = models.CharField('JSS Field name', max_length=1024, blank=True)
+
     api_endpoint = models.CharField('API Endpoint (data retrival)', max_length=1024,blank=True)
 
     class Meta:
@@ -13,6 +16,35 @@ class JSSComputerAttributeType(models.Model):
 
     def __unicode__(self):
         return self.label
+ 
+    def get_attributes(self, computer):
+       if self.jss_field:
+           return self.jss_extract(computer)
+
+       return None
+
+    def jss_extract(self, computer):
+        return None
+
+    def dump_debug_xml(self,manifest):
+       if not manifest.has_key('jss_attribute_types'): 
+           manifest['jss_attribute_types']=[]
+       if not manifest.has_key('jss_attribute_type_sets'): 
+            manifest['jss_attribute_type_sets']={}
+
+       choices = self.jsscomputerattributemapping_set.all()
+
+       manifest['jss_attribute_types'].append("%s = %s choices" % 
+                                  (self.label, choices.count() ) )  
+
+       manifest['jss_attribute_type_sets'][self.label]=[]
+
+       choices_list = manifest['jss_attribute_type_sets'][self.label]
+       for ch in choices:
+           choices_list.append('%s' % (ch,) )
+
+
+
 
 
 class JSSComputerAttributeMapping(models.Model):

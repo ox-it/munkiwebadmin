@@ -12,17 +12,17 @@ class JSSComputerAttributeTypeAdminForm(forms.ModelForm):
         cleaned_data = super(JSSComputerAttributeTypeAdminForm, self).clean()
 
         api_endpoint  = cleaned_data.get("api_endpoint")
-        xpath = cleaned_data.get("xpath")
+        jss_field = cleaned_data.get("jss_field")
 
-        if api_endpoint and xpath: 
+        if api_endpoint and jss_field: 
             raise forms.ValidationError(
-                'Cannot set both api endpoint and xpath',
-                code='both api and xpath set')
+                'Cannot set both api endpoint and jss_field',
+                code='both api and jss_field set')
 
-        if not api_endpoint and not xpath:
+        if not api_endpoint and not jss_field:
             raise forms.ValidationError(
-                'Must set one of api endpoint and xpath',
-                code='neither api and xpath set')
+                'Must set one of api endpoint and jss_field',
+                code='neither api and jss_field set')
 
 class JSSComputerAttributeTypeAdmin(admin.ModelAdmin):
 
@@ -30,7 +30,7 @@ class JSSComputerAttributeTypeAdmin(admin.ModelAdmin):
 
     fieldsets = [
         (None,               {'fields': ['label']}),
-        ('Retrieval information', {'fields': ['xpath',
+        ('Retrieval information', {'fields': ['jss_field',
                                               'api_endpoint'] }),
     ]
 

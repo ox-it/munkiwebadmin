@@ -5,7 +5,6 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.contrib import admin
 
 from django.contrib.auth import views as authviews
-
 from jssmanifests import xmlviews
 
 urlpatterns = [
@@ -25,6 +24,7 @@ urlpatterns = [
     # for compatibility with MunkiReport scripts
     url(r'^update/', include('reports.urls')),
     url(r'^lookup/', include('reports.urls')),
+    url(r'^jssmanifests/', include('jssmanifests.urls')),
     url(r'^$', include('reports.urls')),
 ]
 

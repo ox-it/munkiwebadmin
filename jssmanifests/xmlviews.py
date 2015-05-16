@@ -7,15 +7,17 @@ from django.conf import settings
 
 from manifests.models import Manifest
 
+from jssmanifests.models import JSSComputerAttributeType
+
 import jss
 import plistlib
 
-def manifest(request, udid):
+def manifest(request, manifest_name):
 
     if request.method == 'GET':
 
-        # load base manifest from file system (either UDID or site_default)
-        manifest = Manifest.read(udid)
+        # load base manifest from file system (either a specific one or site_default)
+        manifest = Manifest.read(manifest_name)
         if not manifest:
             manifest = Manifest.read('site_default')
 
@@ -24,13 +26,18 @@ def manifest(request, udid):
                                  url=settings.JSS_URL,
                                  ssl_verify=settings.JSS_VERIFY_CERT)
 
-        computer = jss_connection.Computer('udid=%s' % udid.upper())
+        computer = jss_connection.Computer('udid=%s' % manifest_name.upper())
        
         if settings.JSSMANIFESTS_DEBUG_DUMPJSSEA:
-            manifest['jss_extension_attributes']=[]
-            for computer_ea in computer.iter('extension_attribute'):
-                if computer_ea.find('value').text:
-                    manifest['jss_extension_attributes'].append("%s = %s" % ( computer_ea.find('name').text, computer_ea.find('value').text))
+            _dump_computer_ea(manifest, computer.iter('extension_attribute') )
+
+        attribute_types = JSSComputerAttributeType.objects.all()
+
+        for type in attribute_types:
+            if settings.JSSMANIFESTS_DEBUG_DUMPJSSEA:
+                type.dump_debug_xml(manifest)
+            choices = type.jsscomputerattributemapping_set.all()
+            attributes = type.get_attributes(computer)
 
         response = HttpResponse(content_type='application/xml')
         plistlib.writePlist(manifest, response)
@@ -40,4 +47,20 @@ def manifest(request, udid):
 
     return response
 
+def _dump_list(tag, manifest, attr_list):
+
+    manifest[tag] = []
+
+    for attr in attr_list:
+        name = attr.find('name').text
+        val  = '(undef)'
+
+        if attr.find('value').text:
+            val = attr.find('value').text
+
+        manifest[ tag ].append("%s = %s" % ( name, val) )
+
+def _dump_computer_ea(manifest, attr_list):
+
+    _dump_list('jss_extension_attributes', manifest, attr_list)
 
