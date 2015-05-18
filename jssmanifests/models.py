@@ -17,15 +17,6 @@ class JSSComputerAttributeType(models.Model):
     def __unicode__(self):
         return self.label
  
-    def get_attributes(self, computer):
-       if self.jss_field:
-           return self.jss_extract(computer)
-
-       return None
-
-    def jss_extract(self, computer):
-        return None
-
     def dump_debug_xml(self,manifest):
        if not manifest.has_key('jss_attribute_types'): 
            manifest['jss_attribute_types']=[]
@@ -43,8 +34,19 @@ class JSSComputerAttributeType(models.Model):
        for ch in choices:
            choices_list.append('%s' % (ch,) )
 
+    def get_data(self,computer_record, key):
+        if self.jss_field:
+           return self.jss_extract(computer_record,key)
+   
+        return None 
 
-
+    def jss_extract(self, computer, key):
+        rv = []
+        for computer_ea in computer.iter(self.jss_field):
+            if computer_ea.find('name').text == key:
+                rv.append(computer_ea)
+        
+        return rv
 
 
 class JSSComputerAttributeMapping(models.Model):
@@ -77,7 +79,6 @@ class JSSComputerAttributeMapping(models.Model):
                                        blank=True)
 
     package_name   = models.CharField('Package Name', max_length=1024, blank=True)
-    package_name   = models.CharField('Package Name', max_length=1024, blank=True)
     package_action = models.CharField('Package Action',
                         choices=PACKAGE_ACTIONS, blank=True, max_length=256)
 
@@ -85,7 +86,7 @@ class JSSComputerAttributeMapping(models.Model):
 
     remove_from_xml   = models.BooleanField('Remove from Manifest')
 
-    priority  = models.IntegerField('Priorty')
+    priorty  = models.IntegerField('Priorty', default = 0)
 
     site   = models.CharField('Site', max_length=1024, blank=True)
 
@@ -98,4 +99,64 @@ class JSSComputerAttributeMapping(models.Model):
                self.jss_computer_attribute_key,
                self.jss_computer_attribute_value,
                self.manifest_element_type)
- 
+
+    def is_in_site(self,site):
+        if not self.site or self.site == site:
+            return True
+        return False
+
+    def computer_match(self,computer):
+       
+       # Check that we are in the correct site
+       site = computer.findtext('general/site')
+       if not self.is_in_site(site):
+           return False 
+       
+       elements =  self.jss_computer_attribute_type.get_data(computer,self.jss_computer_attribute_key);
+       for element in elements:
+           if    element.find('value').text and element.find('value').text == self.jss_computer_attribute_value:
+               return True
+       
+       return False
+
+    def apply_mapping(self,manifest):
+        if self.manifest_element_type == 'c':
+            self.update_manifest_catalog(manifest)
+
+        if self.manifest_element_type == 'm':
+            self.update_manifest_manifest(manifest)
+
+        if self.manifest_element_type == 'p':
+            self.update_manifest_package(manifest)
+
+        return
+
+    # Question: should we always remove, then add (so that priorties have
+    #           a real effect ?
+    def _update_list(self, list, name):
+
+       if self.remove_from_xml:
+           while list.count(name) > 0:
+               list.remove(name)
+           return
+  
+       if list.count(name) <= 0:
+           list.append(name)
+
+       return 
+
+    def update_manifest_catalog(self, manifest):
+        self._update_list(manifest['catalogs'], self.catalog_name)
+
+        return
+  
+    def update_manifest_manifest(self, manifest):
+        self._update_list(manifest['included_manifests'], self.manifest_name)
+        return 
+
+    def update_manifest_package(self, manifest):
+       if not manifest.has_key(self.package_action):
+           manifest[self.package_action] = []
+
+       self._update_list(manifest[self.package_action], self.package_name)
+       return 

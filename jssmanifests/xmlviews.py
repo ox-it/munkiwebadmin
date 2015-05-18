@@ -3,6 +3,8 @@ from django.http import HttpResponse, HttpRequest, HttpResponseRedirect
 
 from django.conf import settings
 
+from operator import attrgetter
+
 # Create your views here.
 
 from manifests.models import Manifest
@@ -33,11 +35,22 @@ def manifest(request, manifest_name):
 
         attribute_types = JSSComputerAttributeType.objects.all()
 
+        manifest['computer_matches'] = []
+        manifest_updates = []
+
         for type in attribute_types:
             if settings.JSSMANIFESTS_DEBUG_DUMPJSSEA:
                 type.dump_debug_xml(manifest)
-            choices = type.jsscomputerattributemapping_set.all()
-            attributes = type.get_attributes(computer)
+            mappings = type.jsscomputerattributemapping_set.all()
+            for mapping in mappings:
+                if mapping.computer_match(computer):
+                    if settings.JSSMANIFESTS_DEBUG_DUMPJSSEA:
+                        manifest['computer_matches'].append( '%s' % mapping)
+                manifest_updates.append(mapping)
+
+        manifest_updates.sort( key=attrgetter('priorty') )
+        for manifest_update in manifest_updates:
+            manifest_update.apply_mapping(manifest)
 
         response = HttpResponse(content_type='application/xml')
         plistlib.writePlist(manifest, response)

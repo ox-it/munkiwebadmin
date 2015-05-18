@@ -45,12 +45,12 @@ class JSSComputerAttributeTypeAdmin(admin.ModelAdmin):
 class JSSComputerAttributeMappingAdmin(admin.ModelAdmin):
 
     fieldsets = [
-        (None,               {'fields': [ 'jss_computer_attribute_value',
+        (None,               {'fields': [ 'jss_computer_attribute_key',
+                                          'jss_computer_attribute_value',
                                           'jss_computer_attribute_type',
-                                          'jss_computer_attribute_key',
                                           'manifest_element_type',
                                           'remove_from_xml',
-                                          'priority',
+                                          'priorty',
                                           'site',
             ]}),
         ('Catalog Settings', {'fields': [ 'catalog_name', ] } ),
