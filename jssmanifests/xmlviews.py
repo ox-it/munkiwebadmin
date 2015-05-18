@@ -46,7 +46,7 @@ def manifest(request, manifest_name):
                 if mapping.computer_match(computer):
                     if settings.JSSMANIFESTS_DEBUG_DUMPJSSEA:
                         manifest['computer_matches'].append( '%s' % mapping)
-                manifest_updates.append(mapping)
+                    manifest_updates.append(mapping)
 
         manifest_updates.sort( key=attrgetter('priorty') )
         for manifest_update in manifest_updates:
