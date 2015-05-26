@@ -33,6 +33,8 @@ To use Manana a Munki client has to use its UDID as ClientIdentifier and retriev
 ### Additional Python library dependencies of Manana
 
 * [python-jss](https://pypi.python.org/pypi/python-jss) [docs]()
+* [PyYAML](https://pypi.python.org/???) [docs]()
+* [LXML](https://pypi.python.org/???) [docs]()
 
 
 ### Munki repository web server configuration changes

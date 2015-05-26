@@ -1,0 +1,13 @@
+---
+  - model: jssmanifests.JSSComputerAttributeType
+    pk: 1
+    fields:
+        label: 'Extension Attibute'
+        xpath_expression: '//computer/extension_attributes/extension_attribute[name=$name]/value/text()'
+        api_endpoint: '/api/url'
+  - model: jssmanifests.JSSComputerAttributeType
+    pk: 2
+    fields:
+        label: 'Site'
+        xpath_expression: '//computer/general/site/name/text()'
+        api_endpoint: '/api/url'

@@ -1,0 +1,1745 @@
+<computer>
+    <general>
+        <id>1</id>
+        <name>macos-test</name>
+        <mac_address>00:0C:29:CD:AC:C7</mac_address>
+        <alt_mac_address />
+        <ip_address>192.168.83.136</ip_address>
+        <serial_number>VMEazaI7Z/u+</serial_number>
+        <udid>00000000-0000-1000-8000-000C29CDACC7</udid>
+        <jamf_version>9.72</jamf_version>
+        <platform>Mac</platform>
+        <barcode_1 />
+        <barcode_2 />
+        <asset_tag />
+        <remote_management>
+            <managed>true</managed>
+            <management_username>orchard</management_username>
+            <management_password_md5 since="9.23">b03a7029ebd5ec37fa38c63c2c630831</management_password_md5>
+            <management_password_sha256 since="9.23">a297c0e6d8e8ed787218d21c101b9010c0c4c78a80bc464c46ffb9594abd2177</management_password_sha256>
+        </remote_management>
+        <mdm_capable>false</mdm_capable>
+        <mdm_capable_users />
+        <report_date>2015-05-06 13:21:20</report_date>
+        <report_date_epoch>1430914880526</report_date_epoch>
+        <report_date_utc>2015-05-06T13:21:20.526+0100</report_date_utc>
+        <last_contact_time>2015-05-07 19:15:55</last_contact_time>
+        <last_contact_time_epoch>1431022555128</last_contact_time_epoch>
+        <last_contact_time_utc>2015-05-07T19:15:55.128+0100</last_contact_time_utc>
+        <initial_entry_date>2015-04-25</initial_entry_date>
+        <initial_entry_date_epoch>1429987218099</initial_entry_date_epoch>
+        <initial_entry_date_utc>2015-04-25T19:40:18.099+0100</initial_entry_date_utc>
+        <last_cloud_backup_date_epoch>0</last_cloud_backup_date_epoch>
+        <last_cloud_backup_date_utc />
+        <distribution_point />
+        <sus />
+        <netboot_server />
+        <site>
+            <id>-1</id>
+            <name>None</name>
+        </site>
+        <itunes_store_account_is_active>false</itunes_store_account_is_active>
+    </general>
+    <location>
+        <username>aaron</username>
+        <real_name>Aaron Wilson</real_name>
+        <email_address>aaron.wilson@it.ox.ac.uk</email_address>
+        <position />
+        <phone />
+        <department />
+        <building />
+        <room />
+    </location>
+    <purchasing>
+        <is_purchased>true</is_purchased>
+        <is_leased>false</is_leased>
+        <po_number />
+        <vendor />
+        <applecare_id />
+        <purchase_price />
+        <purchasing_account />
+        <po_date />
+        <po_date_epoch>0</po_date_epoch>
+        <po_date_utc />
+        <warranty_expires />
+        <warranty_expires_epoch>0</warranty_expires_epoch>
+        <warranty_expires_utc />
+        <lease_expires />
+        <lease_expires_epoch>0</lease_expires_epoch>
+        <lease_expires_utc />
+        <life_expectancy>0</life_expectancy>
+        <purchasing_contact />
+        <os_applecare_id />
+        <os_maintenance_expires />
+        <attachments />
+    </purchasing>
+    <peripherals>
+        <size>0</size>
+    </peripherals>
+    <hardware>
+        <make>Apple</make>
+        <model>VMware Virtual Platform</model>
+        <model_identifier>VMware7,1</model_identifier>
+        <os_name>Mac OS X</os_name>
+        <os_version>10.9.5</os_version>
+        <os_build>13F34</os_build>
+        <active_directory_status>Not Bound</active_directory_status>
+        <service_pack />
+        <processor_type />
+        <processor_architecture>i386</processor_architecture>
+        <processor_speed>2380</processor_speed>
+        <processor_speed_mhz>2380</processor_speed_mhz>
+        <number_processors>2</number_processors>
+        <total_ram>2048</total_ram>
+        <total_ram_mb>2048</total_ram_mb>
+        <boot_rom>VMW71.00V.0.B64.1310020058</boot_rom>
+        <bus_speed>0</bus_speed>
+        <bus_speed_mhz>0</bus_speed_mhz>
+        <battery_capacity>-1</battery_capacity>
+        <cache_size>256</cache_size>
+        <cache_size_kb>256</cache_size_kb>
+        <available_ram_slots>56</available_ram_slots>
+        <optical_drive>NECVMWar VMware SATA CD01</optical_drive>
+        <nic_speed>10/100/1000</nic_speed>
+        <smc_version>1.16f8</smc_version>
+        <storage>
+            <device>
+                <disk>disk0</disk>
+                <model>VMware Virtual SATA Hard Drive</model>
+                <revision>00000001</revision>
+                <serial_number>00000000000000000001</serial_number>
+                <size>45384</size>
+                <drive_capacity_mb>45384</drive_capacity_mb>
+                <connection_type>YES</connection_type>
+                <smart_status>Not Supported</smart_status>
+                <partition>
+                    <name>Macintosh HD (Boot Partition)</name>
+                    <size>40632</size>
+                    <type>boot</type>
+                    <partition_capacity_mb>40632</partition_capacity_mb>
+                    <percentage_full>30</percentage_full>
+                    <filevault_status>Not Encrypted</filevault_status>
+                    <filevault_percent>0</filevault_percent>
+                    <filevault2_status>Not Encrypted</filevault2_status>
+                    <filevault2_percent>0</filevault2_percent>
+                    <lvgUUID />
+                    <lvUUID />
+                    <pvUUID />
+                </partition>
+            </device>
+        </storage>
+        <mapped_printers />
+    </hardware>
+    <software>
+        <unix_executables />
+        <licensed_software />
+        <installed_by_casper />
+        <installed_by_installer_swu>
+            <package>com.apple.pkg.AdditionalEssentials</package>
+            <package>com.apple.pkg.AdditionalSpeechVoices</package>
+            <package>com.apple.pkg.AppleDisplaysConfigData.12U2192</package>
+            <package>com.apple.pkg.AsianLanguagesSupport</package>
+            <package>com.apple.pkg.BaseSystemBinaries</package>
+            <package>com.apple.pkg.BaseSystemResources</package>
+            <package>com.apple.pkg.BSD</package>
+            <package>com.apple.pkg.CoreLSKDConfigData.8</package>
+            <package>com.apple.pkg.Essentials</package>
+            <package>com.apple.pkg.GatekeeperConfigData.12U2223</package>
+            <package>com.apple.pkg.JavaEssentials</package>
+            <package>com.apple.pkg.JavaTools</package>
+            <package>com.apple.pkg.MediaFiles</package>
+            <package>com.apple.pkg.OxfordDictionaries</package>
+            <package>com.apple.pkg.X11redirect</package>
+            <package>com.apple.pkg.XProtectPlistConfigData.12U4045</package>
+            <package>com.googlecode.munki.admin</package>
+            <package>com.googlecode.munki.app</package>
+            <package>com.googlecode.munki.core</package>
+            <package>com.googlecode.munki.launchd</package>
+        </installed_by_installer_swu>
+        <cached_by_casper />
+        <available_software_updates>
+            <name>iBooksDelta-1.0.1</name>
+            <name>iTunesX-12.1.2</name>
+            <name>RemoteDesktopClient-3.8.2 v1.1</name>
+            <name>Safari7.1.5Mavericks-7.1.5</name>
+            <name>SecUpd2015-004Mavericks-1.0</name>
+        </available_software_updates>
+        <available_updates>
+            <update>
+                <name>iBooks Update</name>
+                <package_name>iBooksDelta-1.0.1</package_name>
+                <version>1.0.1</version>
+            </update>
+            <update>
+                <name>iTunes</name>
+                <package_name>iTunesX-12.1.2</package_name>
+                <version>12.1.2</version>
+            </update>
+            <update>
+                <name>Remote Desktop Client Update</name>
+                <package_name>RemoteDesktopClient-3.8.2 v1.1</package_name>
+                <version>3.8.2 v1.1</version>
+            </update>
+            <update>
+                <name>Safari</name>
+                <package_name>Safari7.1.5Mavericks-7.1.5</package_name>
+                <version>7.1.5</version>
+            </update>
+            <update>
+                <name>Security Update 2015-004</name>
+                <package_name>SecUpd2015-004Mavericks-1.0</package_name>
+                <version>1.0</version>
+            </update>
+        </available_updates>
+        <running_services>
+            <name>0x7f99c3409fe0.anonymous.authd</name>
+            <name>0x7f99c340a280.anonymous.launchd</name>
+            <name>0x7f99c340a520.anonymous.xpcd</name>
+            <name>0x7f99c3414850.anonymous.com.apple.CodeS</name>
+            <name>0x7f99c3414b00.anonymous.loginwindow</name>
+            <name>0x7f99c3414db0.anonymous.launchd</name>
+            <name>0x7f99c3415050.anonymous.xpcd</name>
+            <name>0x7f99c34217e0.anonymous.launchd</name>
+            <name>0x7f99c3421a80.anonymous.xpcd</name>
+            <name>0x7f99c34228e0.anonymous.coreaudiod</name>
+            <name>0x7f99c3426880.anonymous.com.apple.audio</name>
+            <name>0x7f99c3438d10.anonymous.com.apple.Share</name>
+            <name>0x7f99c3439150.anonymous.dscl</name>
+            <name>0x7f99c3441400.anonymous.com.apple.Input</name>
+            <name>0x7f99c3441af0.anonymous.com.apple.Input</name>
+            <name>0x7f99c3441da0.anonymous.launchd</name>
+            <name>0x7f99c3442050.anonymous.xpcd</name>
+            <name>0x7f99c3442ed0.anonymous.imagent</name>
+            <name>0x7f99c3443180.anonymous.launchd</name>
+            <name>0x7f99c3443430.anonymous.launchd</name>
+            <name>0x7f99c34436e0.anonymous.xpcd</name>
+            <name>0x7f99c3448de0.anonymous.IMDPersistenceA</name>
+            <name>0x7f99c3449120.anonymous.appleeventsd</name>
+            <name>0x7f99c34493e0.anonymous.launchd</name>
+            <name>0x7f99c3449690.anonymous.xpcd</name>
+            <name>0x7f99c344a820.anonymous.com.apple.WebKi</name>
+            <name>0x7f99c344aac0.anonymous.com.apple.WebKi</name>
+            <name>0x7f99c344ad60.anonymous.lsboxd</name>
+            <name>0x7f99c344b010.anonymous.launchd</name>
+            <name>0x7f99c344b2c0.anonymous.launchd</name>
+            <name>0x7f99c344b570.anonymous.xpcd</name>
+            <name>0x7f99c3455350.anonymous.com.apple.WebKi</name>
+            <name>0x7f99c3455610.anonymous.launchd</name>
+            <name>0x7f99c34558c0.anonymous.xpcd</name>
+            <name>0x7f99c3463b50.anonymous.com.apple.IconS</name>
+            <name>0x7f99c3463e00.anonymous.com.apple.IconS</name>
+            <name>0x7f99c34640c0.anonymous.launchd</name>
+            <name>0x7f99c3464370.anonymous.xpcd</name>
+            <name>0x7f99c346c260.anonymous.launchd</name>
+            <name>0x7f99c346c500.anonymous.launchd</name>
+            <name>0x7f99c346c7a0.anonymous.xpcd</name>
+            <name>0x7f99c3474bd0.anonymous.launchd</name>
+            <name>0x7f99c3474e80.anonymous.xpcd</name>
+            <name>0x7f99c347cd70.anonymous.com.apple.audio</name>
+            <name>0x7f99c347d030.anonymous.launchd</name>
+            <name>0x7f99c3487e50.anonymous.launchd</name>
+            <name>0x7f99c34880f0.anonymous.launchd</name>
+            <name>0x7f99c3488390.anonymous.xpcd</name>
+            <name>0x7f99c348e5a0.anonymous.Finder</name>
+            <name>0x7f99c3493d40.anonymous.com.apple.WebKi</name>
+            <name>0x7f99c3493fe0.anonymous.com.apple.WebKi</name>
+            <name>0x7f99c3494290.anonymous.launchd</name>
+            <name>0x7f99c3494530.anonymous.xpcd</name>
+            <name>0x7f99c349eb00.anonymous.nbagent</name>
+            <name>0x7f99c35171f0.anonymous.launchd</name>
+            <name>0x7f99c351add0.anonymous.wdhelper</name>
+            <name>0x7f99c3534f70.anonymous.xpcd</name>
+            <name>0x7f99c3536f70.anonymous.authd</name>
+            <name>0x7f99c3537210.anonymous.launchd</name>
+            <name>0x7f99c353d980.anonymous.UserEventAgent</name>
+            <name>0x7f99c353dc30.anonymous.launchd</name>
+            <name>0x7f99c353ded0.anonymous.xpcd</name>
+            <name>0x7f99c35477b0.anonymous.softwareupdated</name>
+            <name>0x7f99c3547a60.anonymous.launchd</name>
+            <name>0x7f99c3547d00.anonymous.xpcd</name>
+            <name>0x7f99c35509a0.anonymous.suhelperd</name>
+            <name>0x7f99c3550f40.anonymous.launchd</name>
+            <name>0x7f99c35511e0.anonymous.xpcd</name>
+            <name>0x7f99c3559a90.anonymous.launchservicesd</name>
+            <name>0x7f99c3559d40.anonymous.launchd</name>
+            <name>0x7f99c3559fe0.anonymous.xpcd</name>
+            <name>0x7f99c355c2c0.anonymous.com.apple.CodeS</name>
+            <name>0x7f99c355c570.anonymous.launchd</name>
+            <name>0x7f99c355c810.anonymous.xpcd</name>
+            <name>0x7f99c3564de0.anonymous.xpcd</name>
+            <name>0x7f99c3566600.anonymous.com.apple.audio</name>
+            <name>0x7f99c35668b0.anonymous.launchd</name>
+            <name>0x7f99c3566b50.anonymous.xpcd</name>
+            <name>0x7f99c356d790.anonymous.SystemUIServer</name>
+            <name>0x7f99c356da40.anonymous.launchd</name>
+            <name>0x7f99c356dce0.anonymous.launchd</name>
+            <name>0x7f99c356ef50.anonymous.NotificationCen</name>
+            <name>0x7f99c356f200.anonymous.launchd</name>
+            <name>0x7f99c356f4a0.anonymous.launchd</name>
+            <name>0x7f99c356f740.anonymous.xpcd</name>
+            <name>0x7f99c356ff40.anonymous.launchd</name>
+            <name>0x7f99c35730f0.anonymous.xpcd</name>
+            <name>0x7f99c3576250.anonymous.diskarbitration</name>
+            <name>0x7f99c3577880.anonymous.UserEventAgent</name>
+            <name>0x7f99c3577b40.anonymous.launchd</name>
+            <name>0x7f99c3577df0.anonymous.launchd</name>
+            <name>0x7f99c35780a0.anonymous.xpcd</name>
+            <name>0x7f99c3580ad0.anonymous.xpcd</name>
+            <name>0x7f99c358e200.anonymous.com.apple.Share</name>
+            <name>0x7f99c358e4b0.anonymous.launchd</name>
+            <name>0x7f99c358e750.anonymous.xpcd</name>
+            <name>0x7f99c35a0290.anonymous.IMDPersistenceA</name>
+            <name>0x7f99c35a0980.anonymous.launchd</name>
+            <name>0x7f99c35a0c30.anonymous.xpcd</name>
+            <name>0x7f99c35acd90.anonymous.Safari</name>
+            <name>0x7f99c35ad030.anonymous.launchd</name>
+            <name>0x7f99c35ad2d0.anonymous.launchd</name>
+            <name>0x7f99c35ad580.anonymous.xpcd</name>
+            <name>0x7f99c35b7d30.anonymous.com.apple.WebKi</name>
+            <name>0x7f99c35b7fe0.anonymous.launchd</name>
+            <name>0x7f99c35b8280.anonymous.xpcd</name>
+            <name>0x7f99c35c4d80.anonymous.Dock</name>
+            <name>0x7f99c35c5030.anonymous.launchd</name>
+            <name>0x7f99c35c52e0.anonymous.launchd</name>
+            <name>0x7f99c35c5590.anonymous.xpcd</name>
+            <name>0x7f99c35cc420.anonymous.CalendarAgent</name>
+            <name>0x7f99c35cc6e0.anonymous.launchd</name>
+            <name>0x7f99c35cc990.anonymous.launchd</name>
+            <name>0x7f99c35ccc40.anonymous.xpcd</name>
+            <name>0x7f99c35d0db0.anonymous.com.apple.dock.</name>
+            <name>0x7f99c35d1060.anonymous.com.apple.dock.</name>
+            <name>0x7f99c35d1310.anonymous.com.apple.audio</name>
+            <name>0x7f99c35d15b0.anonymous.xpcd</name>
+            <name>0x7f99c35d8110.anonymous.installd</name>
+            <name>0x7f99c35d83b0.anonymous.launchd</name>
+            <name>0x7f99c35d8650.anonymous.launchd</name>
+            <name>0x7f99c35d88f0.anonymous.xpcd</name>
+            <name>0x7f99c35d9fb0.anonymous.installd</name>
+            <name>0x7f99c35da260.anonymous.launchd</name>
+            <name>0x7f99c35da510.anonymous.xpcd</name>
+            <name>0x7f99c35dcd20.anonymous.LaterAgent</name>
+            <name>0x7f99c35dcfc0.anonymous.launchd</name>
+            <name>0x7f99c35dd260.anonymous.launchd</name>
+            <name>0x7f99c35dd500.anonymous.xpcd</name>
+            <name>0x7f99c35e3bc0.anonymous.Terminal</name>
+            <name>0x7f99c35e3e70.anonymous.launchd</name>
+            <name>0x7f99c35e4120.anonymous.launchd</name>
+            <name>0x7f99c35e43d0.anonymous.xpcd</name>
+            <name>0x7f99c360a540.anonymous.pkgutil</name>
+            <name>0x7f99c360a7e0.anonymous.defaults</name>
+            <name>0x7f99c360aa80.anonymous.launchctl</name>
+            <name>com.apple.accounts.dom</name>
+            <name>com.apple.afpfs_afpLoad</name>
+            <name>com.apple.afpfs_checkafp</name>
+            <name>com.apple.AirPlayXPCHelper</name>
+            <name>com.apple.airport.updateprefs</name>
+            <name>com.apple.AirPort.wps</name>
+            <name>com.apple.airportd</name>
+            <name>com.apple.alf</name>
+            <name>com.apple.AOSNotification</name>
+            <name>com.apple.appkit.xpc.documentPopoverViewService</name>
+            <name>com.apple.appkit.xpc.openAndSavePanelService</name>
+            <name>com.apple.appkit.xpc.sandboxedServiceRunner</name>
+            <name>com.apple.appkit.xpc.VersionsUIHelper</name>
+            <name>com.apple.appleseed.fbahelperd</name>
+            <name>com.apple.applessdstatistics</name>
+            <name>com.apple.AppSandboxSMLoginItemEnabler</name>
+            <name>com.apple.apsd</name>
+            <name>com.apple.aslmanager</name>
+            <name>com.apple.audio.ComponentHelper</name>
+            <name>com.apple.audio.coreaudiod</name>
+            <name>com.apple.audio.DriverHelper</name>
+            <name>com.apple.audio.InfoHelper</name>
+            <name>com.apple.audio.SandboxHelper</name>
+            <name>com.apple.auditd</name>
+            <name>com.apple.authd</name>
+            <name>com.apple.authorizationhost</name>
+            <name>com.apple.autofsd</name>
+            <name>com.apple.automator.xpc.workflowServiceRunner</name>
+            <name>com.apple.automountd</name>
+            <name>com.apple.awacsd</name>
+            <name>com.apple.backupd</name>
+            <name>com.apple.blued</name>
+            <name>com.apple.bluetoothaudiod</name>
+            <name>com.apple.bnepd</name>
+            <name>com.apple.bsd.dirhelper</name>
+            <name>com.apple.bsd.launchdadd</name>
+            <name>com.apple.cfprefsd.xpc.daemon</name>
+            <name>com.apple.CGXPCServicesAgent</name>
+            <name>com.apple.CharacterPicker.FileService</name>
+            <name>com.apple.cmio.AppleCameraAssistant</name>
+            <name>com.apple.cmio.AVCAssistant</name>
+            <name>com.apple.cmio.IIDCVideoAssistant</name>
+            <name>com.apple.cmio.registerassistantservice</name>
+            <name>com.apple.cmio.VDCAssistant</name>
+            <name>com.apple.CMValidateMovieDataReferenceService</name>
+            <name>com.apple.CodeSigningHelper</name>
+            <name>com.apple.ColorSyncXPCAgent</name>
+            <name>com.apple.CommerceKit.StoreAEService</name>
+            <name>com.apple.configd</name>
+            <name>com.apple.configureLocalKDC</name>
+            <name>com.apple.coremedia.videodecoder</name>
+            <name>com.apple.CoreRAID</name>
+            <name>com.apple.coreservices.appleevents</name>
+            <name>com.apple.coreservices.appleid.passwordcheck</name>
+            <name>com.apple.coreservices.launchservicesd</name>
+            <name>com.apple.coreservicesd</name>
+            <name>com.apple.corestorage.corestoraged</name>
+            <name>com.apple.corestorage.corestoragehelperd</name>
+            <name>com.apple.coresymbolicationd</name>
+            <name>com.apple.CoreText.FontDownloadHelper</name>
+            <name>com.apple.cvmsServ</name>
+            <name>com.apple.DataDetectors.DataDetectorsActionService</name>
+            <name>com.apple.DataDetectorsDynamicData</name>
+            <name>com.apple.desktopservices.KeynoteConverterXPCService32</name>
+            <name>com.apple.desktopservices.KeynoteConverterXPCService64</name>
+            <name>com.apple.desktopservices.NumbersConverterXPCService32</name>
+            <name>com.apple.desktopservices.NumbersConverterXPCService64</name>
+            <name>com.apple.desktopservices.PagesConverterXPCService32</name>
+            <name>com.apple.desktopservices.PagesConverterXPCService64</name>
+            <name>com.apple.DiagnosticReportCleanUpDaemon</name>
+            <name>com.apple.DictionaryServiceHelper</name>
+            <name>com.apple.diskarbitrationd</name>
+            <name>com.apple.diskmanagementd</name>
+            <name>com.apple.displaypolicyd</name>
+            <name>com.apple.distnoted.xpc.daemon</name>
+            <name>com.apple.dock.ecti</name>
+            <name>com.apple.dock.extra</name>
+            <name>com.apple.dpd</name>
+            <name>com.apple.dspluginhelperd</name>
+            <name>com.apple.DumpGPURestart</name>
+            <name>com.apple.DumpPanic</name>
+            <name>com.apple.dvdplayback.setregion</name>
+            <name>com.apple.dynamic_pager</name>
+            <name>com.apple.eapolcfg_auth</name>
+            <name>com.apple.efilogin-helper</name>
+            <name>com.apple.emond</name>
+            <name>com.apple.emond.aslmanager</name>
+            <name>com.apple.facebook.xpc</name>
+            <name>com.apple.familycontrols</name>
+            <name>com.apple.FileCoordination</name>
+            <name>com.apple.findmymacd</name>
+            <name>com.apple.findmymacmessenger</name>
+            <name>com.apple.fontd</name>
+            <name>com.apple.fontmover</name>
+            <name>com.apple.FontWorker</name>
+            <name>com.apple.foundation.UserScriptService</name>
+            <name>com.apple.fseventsd</name>
+            <name>com.apple.geod</name>
+            <name>com.apple.gkreport</name>
+            <name>com.apple.gssd</name>
+            <name>com.apple.HasTRB</name>
+            <name>com.apple.hdiejectd</name>
+            <name>com.apple.hidd</name>
+            <name>com.apple.hiservices-xpcservice</name>
+            <name>com.apple.IASUtilities.IASCloudConfigHelper</name>
+            <name>com.apple.ichat.BuddyPictureService</name>
+            <name>com.apple.ichat.TranscriptRenderingService</name>
+            <name>com.apple.iCloudHelper</name>
+            <name>com.apple.iCloudStats</name>
+            <name>com.apple.IconServicesAgent</name>
+            <name>com.apple.iconservicesd</name>
+            <name>com.apple.IFCStart</name>
+            <name>com.apple.ImageKit.MediaLibraryService</name>
+            <name>com.apple.ImageKit.RecentPictureService</name>
+            <name>com.apple.imdmessageservices.IMDMessageServicesAgent</name>
+            <name>com.apple.imdpersistence.IMDPersistenceAgent</name>
+            <name>com.apple.imfoundation.IMRemoteURLConnectionAgent</name>
+            <name>com.apple.InputMethodKit.UserDictionary</name>
+            <name>com.apple.installd</name>
+            <name>com.apple.internetaccounts</name>
+            <name>com.apple.IOAccelMemoryInfoCollector</name>
+            <name>com.apple.IOBluetoothUSBDFU</name>
+            <name>com.apple.kcproxy</name>
+            <name>com.apple.Kerberos.digest-service</name>
+            <name>com.apple.Kerberos.kadmind</name>
+            <name>com.apple.Kerberos.kcm</name>
+            <name>com.apple.Kerberos.kdc</name>
+            <name>com.apple.Kerberos.kpasswdd</name>
+            <name>com.apple.KernelEventAgent</name>
+            <name>com.apple.kextd</name>
+            <name>com.apple.kuncd</name>
+            <name>com.apple.lakitu</name>
+            <name>com.apple.laterscheduler</name>
+            <name>com.apple.launchctl.System</name>
+            <name>com.apple.launchd.peruser.0</name>
+            <name>com.apple.launchd.peruser.200</name>
+            <name>com.apple.launchd.peruser.202</name>
+            <name>com.apple.launchd.peruser.501</name>
+            <name>com.apple.launchd.peruser.55</name>
+            <name>com.apple.launchd.peruser.89</name>
+            <name>com.apple.launchd.peruser.92</name>
+            <name>com.apple.linkedin.xpc</name>
+            <name>com.apple.Localization.SetDefaultsService</name>
+            <name>com.apple.locationd</name>
+            <name>com.apple.lockd</name>
+            <name>com.apple.locum</name>
+            <name>com.apple.logind</name>
+            <name>com.apple.loginwindow</name>
+            <name>com.apple.loginwindow.LFVTracer</name>
+            <name>com.apple.logkextloadsd</name>
+            <name>com.apple.logsyswritesd</name>
+            <name>com.apple.MailMigratorService</name>
+            <name>com.apple.MailServiceAgent</name>
+            <name>com.apple.ManagedClient</name>
+            <name>com.apple.ManagedClient.cloudconfigurationd</name>
+            <name>com.apple.ManagedClient.enroll</name>
+            <name>com.apple.MapRenderingService</name>
+            <name>com.apple.mbicloudsetupd</name>
+            <name>com.apple.mdmclient.daemon</name>
+            <name>com.apple.mDNSResponder</name>
+            <name>com.apple.mDNSResponderHelper</name>
+            <name>com.apple.metadata.mds</name>
+            <name>com.apple.metadata.mds.index</name>
+            <name>com.apple.metadata.mds.scan</name>
+            <name>com.apple.metadata.mds.spindump</name>
+            <name>com.apple.msrpc.lsarpc</name>
+            <name>com.apple.msrpc.mdssvc</name>
+            <name>com.apple.msrpc.netlogon</name>
+            <name>com.apple.msrpc.srvsvc</name>
+            <name>com.apple.msrpc.wkssvc</name>
+            <name>com.apple.netauth.sys.auth</name>
+            <name>com.apple.netauth.sys.gui</name>
+            <name>com.apple.netbiosd</name>
+            <name>com.apple.networkd</name>
+            <name>com.apple.networkd_privileged</name>
+            <name>com.apple.NetworkDiagnostics</name>
+            <name>com.apple.newsyslog</name>
+            <name>com.apple.nfsconf</name>
+            <name>com.apple.nfsd</name>
+            <name>com.apple.nis.ypbind</name>
+            <name>com.apple.nlcd</name>
+            <name>com.apple.noticeboard.state</name>
+            <name>com.apple.notifyd</name>
+            <name>com.apple.ocspd</name>
+            <name>com.apple.opendirectoryd</name>
+            <name>com.apple.pacemaker</name>
+            <name>com.apple.PassXPCService</name>
+            <name>com.apple.PCIELaneConfigTool</name>
+            <name>com.apple.PDFKit.PDFFileRefsValidator</name>
+            <name>com.apple.PerformanceAnalysis.animationperfd</name>
+            <name>com.apple.periodic-daily</name>
+            <name>com.apple.periodic-monthly</name>
+            <name>com.apple.periodic-weekly</name>
+            <name>com.apple.pfctl</name>
+            <name>com.apple.pfd</name>
+            <name>com.apple.platform.ptmd</name>
+            <name>com.apple.powerd</name>
+            <name>com.apple.powerd.swd</name>
+            <name>com.apple.preferences.timezone.admintool</name>
+            <name>com.apple.preferences.timezone.auto</name>
+            <name>com.apple.printtool.daemon</name>
+            <name>com.apple.qtkitserver</name>
+            <name>com.apple.racoon</name>
+            <name>com.apple.RemoteDesktop.PrivilegeProxy</name>
+            <name>com.apple.RemotePairTool</name>
+            <name>com.apple.ReportCrash.Root</name>
+            <name>com.apple.ReportPanicService</name>
+            <name>com.apple.revisiond</name>
+            <name>com.apple.RFBEventHelper</name>
+            <name>com.apple.rpcbind</name>
+            <name>com.apple.Safari.SocialHelper</name>
+            <name>com.apple.SafariServices</name>
+            <name>com.apple.sandboxd</name>
+            <name>com.apple.SceneKit.C3DColladaResourcesCoordinator</name>
+            <name>com.apple.SCHelper</name>
+            <name>com.apple.screensharing</name>
+            <name>com.apple.scsid</name>
+            <name>com.apple.security.agentMain</name>
+            <name>com.apple.security.agentMain.00000000-0000-0000-0000-0000000186A5</name>
+            <name>com.apple.security.agentStub</name>
+            <name>com.apple.security.authhost</name>
+            <name>com.apple.security.authhost.00000000-0000-0000-0000-0000000186A5</name>
+            <name>com.apple.security.pboxd</name>
+            <name>com.apple.security.syspolicy</name>
+            <name>com.apple.security.XPCKeychainSandboxCheck</name>
+            <name>com.apple.security.XPCTimeStampingService</name>
+            <name>com.apple.securityd</name>
+            <name>com.apple.securityd_service</name>
+            <name>com.apple.ServerPerfLog</name>
+            <name>com.apple.ServerPerfLog.aslmanager</name>
+            <name>com.apple.sessionlogoutd</name>
+            <name>com.apple.ShareKitHelper</name>
+            <name>com.apple.shutdown_monitor</name>
+            <name>com.apple.sleepservicesd</name>
+            <name>com.apple.smb.preferences</name>
+            <name>com.apple.snhelper</name>
+            <name>com.apple.softwareupdatecheck.initial</name>
+            <name>com.apple.softwareupdated</name>
+            <name>com.apple.speech.speechsynthesisd</name>
+            <name>com.apple.spindump</name>
+            <name>com.apple.spindump_symbolicator</name>
+            <name>com.apple.stackshot</name>
+            <name>com.apple.statd.notify</name>
+            <name>com.apple.StoreBookMetadataService</name>
+            <name>com.apple.storereceiptinstaller</name>
+            <name>com.apple.SubmitDiagInfo.Root</name>
+            <name>com.apple.suhelperd</name>
+            <name>com.apple.syslogd</name>
+            <name>com.apple.sysmond</name>
+            <name>com.apple.systemadministration.writeconfig</name>
+            <name>com.apple.systemkeychain</name>
+            <name>com.apple.systempreferences.install</name>
+            <name>com.apple.SystemStarter</name>
+            <name>com.apple.systemstats.analysis</name>
+            <name>com.apple.systemstats.daily</name>
+            <name>com.apple.systemstatsd</name>
+            <name>com.apple.systemuiserver.scriptrunner</name>
+            <name>com.apple.taskgated</name>
+            <name>com.apple.taskgated-helper</name>
+            <name>com.apple.tccd.system</name>
+            <name>com.apple.tencentweibo.xpc</name>
+            <name>com.apple.TrustEvaluationAgent.system</name>
+            <name>com.apple.twitter.xpc</name>
+            <name>com.apple.ucupdate.plist</name>
+            <name>com.apple.uninstalld</name>
+            <name>com.apple.unmountassistant.sysagent</name>
+            <name>com.apple.usbd</name>
+            <name>com.apple.usbmuxd</name>
+            <name>com.apple.UserEventAgent-System</name>
+            <name>com.apple.UserNotificationCenter</name>
+            <name>com.apple.var-db-dslocal-backup</name>
+            <name>com.apple.vsdbutil</name>
+            <name>com.apple.warmd</name>
+            <name>com.apple.wdhelper</name>
+            <name>com.apple.WeatherKitService</name>
+            <name>com.apple.webdavfs_load_kext</name>
+            <name>com.apple.WebKit.Networking</name>
+            <name>com.apple.WebKit.Networking.Development</name>
+            <name>com.apple.WebKit.Networking.E74EADF8-B569-4C46-B26E-F86B07051F2B</name>
+            <name>com.apple.WebKit.OfflineStorage</name>
+            <name>com.apple.WebKit.OfflineStorage.Development</name>
+            <name>com.apple.WebKit.Plugin.32</name>
+            <name>com.apple.WebKit.Plugin.64</name>
+            <name>com.apple.WebKit.Plugin.Development</name>
+            <name>com.apple.WebKit.WebContent</name>
+            <name>com.apple.WebKit.WebContent.064CDEF0-0E94-431E-8EAE-B249FFD5C435</name>
+            <name>com.apple.WebKit.WebContent.09FD2554-4136-4C54-93DA-8E756A79423F</name>
+            <name>com.apple.WebKit.WebContent.1F02970F-1B75-478B-AD48-5668DD98DEF6</name>
+            <name>com.apple.WebKit.WebContent.35510F92-4A30-42DA-AD56-EBF0D11E37F8</name>
+            <name>com.apple.WebKit.WebContent.466786D3-5812-4293-9EA3-F8218F3F5EC7</name>
+            <name>com.apple.WebKit.WebContent.4C6631F8-2B40-4C33-B67A-16AA6ACD8C21</name>
+            <name>com.apple.WebKit.WebContent.73D75AC2-59BC-4E64-8994-C8EC812FF67B</name>
+            <name>com.apple.WebKit.WebContent.78D9AD06-F67C-49A1-A85E-F0B3BAFF32C6</name>
+            <name>com.apple.WebKit.WebContent.7DB21A68-CC42-42C4-86E8-B2FC29E2C393</name>
+            <name>com.apple.WebKit.WebContent.891C0C1A-7CD2-464A-893A-C5B84D3CE924</name>
+            <name>com.apple.WebKit.WebContent.9E3EA291-51F9-4026-8102-7176276BF200</name>
+            <name>com.apple.WebKit.WebContent.A1F3C84E-BBF0-4D94-B3C4-2937CFA7D869</name>
+            <name>com.apple.WebKit.WebContent.B63AE149-E2D8-4DA2-A858-FADAC08CB1A7</name>
+            <name>com.apple.WebKit.WebContent.C4BE9837-36B3-4FCC-903E-683E6B382AE8</name>
+            <name>com.apple.WebKit.WebContent.Development</name>
+            <name>com.apple.WebKit.WebContent.E395BF2E-2F93-44DE-ACC1-3AA567AF6E09</name>
+            <name>com.apple.WebKit.WebContent.E3AA860F-2FDB-4590-B38D-D0805F7352FE</name>
+            <name>com.apple.weibo.xpc</name>
+            <name>com.apple.wifid</name>
+            <name>com.apple.WindowServer</name>
+            <name>com.apple.wwand</name>
+            <name>com.apple.xpcd</name>
+            <name>com.apple.xpcd.00000000-0000-0000-0000-000000000000</name>
+            <name>com.apple.xpcd.37000000-0000-0000-0000-000000000000</name>
+            <name>com.apple.xpcd.C8000000-0000-0000-0000-000000000000</name>
+            <name>com.apple.xpcd.CA000000-0000-0000-0000-000000000000</name>
+            <name>com.apple.xpcd.F5010000-0000-0000-0000-000000000000</name>
+            <name>com.googlecode.munki.logouthelper</name>
+            <name>com.googlecode.munki.managedsoftwareupdate-check</name>
+            <name>com.googlecode.munki.managedsoftwareupdate-install</name>
+            <name>com.googlecode.munki.managedsoftwareupdate-manualcheck</name>
+            <name>com.openssh.sshd</name>
+            <name>com.vix.cron</name>
+            <name>org.cups.cupsd</name>
+            <name>org.ntp.ntpd</name>
+            <name>org.postfix.master</name>
+        </running_services>
+        <applications>
+            <size>55</size>
+            <application>
+                <name>Activity Monitor.app</name>
+                <path>/Applications/Utilities/Activity Monitor.app</path>
+                <version>10.9.0</version>
+            </application>
+            <application>
+                <name>AirPort Utility.app</name>
+                <path>/Applications/Utilities/AirPort Utility.app</path>
+                <version>6.3.2</version>
+            </application>
+            <application>
+                <name>App Store.app</name>
+                <path>/Applications/App Store.app</path>
+                <version>1.3</version>
+            </application>
+            <application>
+                <name>AppleScript Editor.app</name>
+                <path>/Applications/Utilities/AppleScript Editor.app</path>
+                <version>2.6.1</version>
+            </application>
+            <application>
+                <name>Audio MIDI Setup.app</name>
+                <path>/Applications/Utilities/Audio MIDI Setup.app</path>
+                <version>3.0.6</version>
+            </application>
+            <application>
+                <name>Automator.app</name>
+                <path>/Applications/Automator.app</path>
+                <version>2.4</version>
+            </application>
+            <application>
+                <name>Bluetooth File Exchange.app</name>
+                <path>/Applications/Utilities/Bluetooth File Exchange.app</path>
+                <version>4.2.7</version>
+            </application>
+            <application>
+                <name>Boot Camp Assistant.app</name>
+                <path>/Applications/Utilities/Boot Camp Assistant.app</path>
+                <version>5.1.2</version>
+            </application>
+            <application>
+                <name>Calculator.app</name>
+                <path>/Applications/Calculator.app</path>
+                <version>10.8</version>
+            </application>
+            <application>
+                <name>Calendar.app</name>
+                <path>/Applications/Calendar.app</path>
+                <version>7.0</version>
+            </application>
+            <application>
+                <name>Casper Admin.app</name>
+                <path>/Applications/Casper Suite/Casper Admin.app</path>
+                <version>9.72</version>
+            </application>
+            <application>
+                <name>Casper Imaging.app</name>
+                <path>/Applications/Casper Suite/Casper Imaging.app</path>
+                <version>9.72</version>
+            </application>
+            <application>
+                <name>Casper Remote.app</name>
+                <path>/Applications/Casper Suite/Casper Remote.app</path>
+                <version>9.72</version>
+            </application>
+            <application>
+                <name>Chess.app</name>
+                <path>/Applications/Chess.app</path>
+                <version>3.10</version>
+            </application>
+            <application>
+                <name>ColorSync Utility.app</name>
+                <path>/Applications/Utilities/ColorSync Utility.app</path>
+                <version>4.9.0</version>
+            </application>
+            <application>
+                <name>Composer.app</name>
+                <path>/Applications/Casper Suite/Composer.app</path>
+                <version>9.72</version>
+            </application>
+            <application>
+                <name>Console.app</name>
+                <path>/Applications/Utilities/Console.app</path>
+                <version>10.9</version>
+            </application>
+            <application>
+                <name>Contacts.app</name>
+                <path>/Applications/Contacts.app</path>
+                <version>8.0</version>
+            </application>
+            <application>
+                <name>Dashboard.app</name>
+                <path>/Applications/Dashboard.app</path>
+                <version>1.8</version>
+            </application>
+            <application>
+                <name>Dictionary.app</name>
+                <path>/Applications/Dictionary.app</path>
+                <version>2.2.1</version>
+            </application>
+            <application>
+                <name>DigitalColor Meter.app</name>
+                <path>/Applications/Utilities/DigitalColor Meter.app</path>
+                <version>5.9</version>
+            </application>
+            <application>
+                <name>Disk Utility.app</name>
+                <path>/Applications/Utilities/Disk Utility.app</path>
+                <version>13</version>
+            </application>
+            <application>
+                <name>DVD Player.app</name>
+                <path>/Applications/DVD Player.app</path>
+                <version>5.7</version>
+            </application>
+            <application>
+                <name>FaceTime.app</name>
+                <path>/Applications/FaceTime.app</path>
+                <version>3.0</version>
+            </application>
+            <application>
+                <name>Font Book.app</name>
+                <path>/Applications/Font Book.app</path>
+                <version>5.0.1</version>
+            </application>
+            <application>
+                <name>Game Center.app</name>
+                <path>/Applications/Game Center.app</path>
+                <version>1.1</version>
+            </application>
+            <application>
+                <name>Grab.app</name>
+                <path>/Applications/Utilities/Grab.app</path>
+                <version>1.8</version>
+            </application>
+            <application>
+                <name>Grapher.app</name>
+                <path>/Applications/Utilities/Grapher.app</path>
+                <version>2.5</version>
+            </application>
+            <application>
+                <name>iBooks.app</name>
+                <path>/Applications/iBooks.app</path>
+                <version>1.0</version>
+            </application>
+            <application>
+                <name>Image Capture.app</name>
+                <path>/Applications/Image Capture.app</path>
+                <version>6.3</version>
+            </application>
+            <application>
+                <name>iTunes.app</name>
+                <path>/Applications/iTunes.app</path>
+                <version>11.3.1</version>
+            </application>
+            <application>
+                <name>Keychain Access.app</name>
+                <path>/Applications/Utilities/Keychain Access.app</path>
+                <version>9.0</version>
+            </application>
+            <application>
+                <name>Launchpad.app</name>
+                <path>/Applications/Launchpad.app</path>
+                <version>1.0</version>
+            </application>
+            <application>
+                <name>Mail.app</name>
+                <path>/Applications/Mail.app</path>
+                <version>7.3</version>
+            </application>
+            <application>
+                <name>Managed Software Center.app</name>
+                <path>/Applications/Managed Software Center.app</path>
+                <version>4.1.2460</version>
+            </application>
+            <application>
+                <name>Managed Software Update.app</name>
+                <path>/Applications/Utilities/Managed Software Update.app</path>
+                <version>4.1.2460</version>
+            </application>
+            <application>
+                <name>Maps.app</name>
+                <path>/Applications/Maps.app</path>
+                <version>1.0</version>
+            </application>
+            <application>
+                <name>Messages.app</name>
+                <path>/Applications/Messages.app</path>
+                <version>8.0</version>
+            </application>
+            <application>
+                <name>Migration Assistant.app</name>
+                <path>/Applications/Utilities/Migration Assistant.app</path>
+                <version>5</version>
+            </application>
+            <application>
+                <name>Mission Control.app</name>
+                <path>/Applications/Mission Control.app</path>
+                <version>1.2</version>
+            </application>
+            <application>
+                <name>Notes.app</name>
+                <path>/Applications/Notes.app</path>
+                <version>2.0</version>
+            </application>
+            <application>
+                <name>Photo Booth.app</name>
+                <path>/Applications/Photo Booth.app</path>
+                <version>6.0</version>
+            </application>
+            <application>
+                <name>Preview.app</name>
+                <path>/Applications/Preview.app</path>
+                <version>7.0</version>
+            </application>
+            <application>
+                <name>QuickTime Player.app</name>
+                <path>/Applications/QuickTime Player.app</path>
+                <version>10.3</version>
+            </application>
+            <application>
+                <name>Recon.app</name>
+                <path>/Applications/Casper Suite/Recon.app</path>
+                <version>9.72</version>
+            </application>
+            <application>
+                <name>Reminders.app</name>
+                <path>/Applications/Reminders.app</path>
+                <version>2.0</version>
+            </application>
+            <application>
+                <name>Safari.app</name>
+                <path>/Applications/Safari.app</path>
+                <version>7.0.6</version>
+            </application>
+            <application>
+                <name>Stickies.app</name>
+                <path>/Applications/Stickies.app</path>
+                <version>10.0</version>
+            </application>
+            <application>
+                <name>System Information.app</name>
+                <path>/Applications/Utilities/System Information.app</path>
+                <version>10.9</version>
+            </application>
+            <application>
+                <name>System Preferences.app</name>
+                <path>/Applications/System Preferences.app</path>
+                <version>13.0</version>
+            </application>
+            <application>
+                <name>Terminal.app</name>
+                <path>/Applications/Utilities/Terminal.app</path>
+                <version>2.4</version>
+            </application>
+            <application>
+                <name>TextEdit.app</name>
+                <path>/Applications/TextEdit.app</path>
+                <version>1.9</version>
+            </application>
+            <application>
+                <name>Time Machine.app</name>
+                <path>/Applications/Time Machine.app</path>
+                <version>1.3</version>
+            </application>
+            <application>
+                <name>VoiceOver Utility.app</name>
+                <path>/Applications/Utilities/VoiceOver Utility.app</path>
+                <version>6.0</version>
+            </application>
+            <application>
+                <name>X11.app</name>
+                <path>/Applications/Utilities/X11.app</path>
+                <version>1.0</version>
+            </application>
+        </applications>
+        <fonts>
+            <size>0</size>
+        </fonts>
+        <plugins>
+            <size>0</size>
+        </plugins>
+    </software>
+    <extension_attributes>
+        <extension_attribute>
+            <id>2</id>
+            <name>Extension Attribute - Selection</name>
+            <type>String</type>
+            <value />
+        </extension_attribute>
+        <extension_attribute>
+            <id>1</id>
+            <name>Extension Attribute - String</name>
+            <type>String</type>
+            <value>Test</value>
+        </extension_attribute>
+    </extension_attributes>
+    <groups_accounts>
+        <computer_group_memberships>
+            <group>All Managed Clients</group>
+        </computer_group_memberships>
+        <local_accounts>
+            <user>
+                <name>_amavisd</name>
+                <realname>AMaViS Daemon</realname>
+                <uid>83</uid>
+                <home>/var/virusmails</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_appleevents</name>
+                <realname>AppleEvents Daemon</realname>
+                <uid>55</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_appowner</name>
+                <realname>Application Owner</realname>
+                <uid>87</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_appserver</name>
+                <realname>Application Server</realname>
+                <uid>79</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_ard</name>
+                <realname>Apple Remote Desktop</realname>
+                <uid>67</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_assetcache</name>
+                <realname>Asset Cache Service</realname>
+                <uid>235</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_atsserver</name>
+                <realname>ATS Server</realname>
+                <uid>97</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_avbdeviced</name>
+                <realname>Ethernet AVB Device Daemon</realname>
+                <uid>229</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_calendar</name>
+                <realname>Calendar</realname>
+                <uid>93</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_ces</name>
+                <realname>Certificate Enrollment Service</realname>
+                <uid>32</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_clamav</name>
+                <realname>ClamAV Daemon</realname>
+                <uid>82</uid>
+                <home>/var/virusmails</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_coreaudiod</name>
+                <realname>Core Audio Daemon</realname>
+                <uid>202</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_coremediaiod</name>
+                <realname>Core Media IO Daemon</realname>
+                <uid>236</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_cvmsroot</name>
+                <realname>CVMS Root</realname>
+                <uid>212</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_cvs</name>
+                <realname>CVS Server</realname>
+                <uid>72</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_cyrus</name>
+                <realname>Cyrus Administrator</realname>
+                <uid>77</uid>
+                <home>/var/imap</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_devdocs</name>
+                <realname>Developer Documentation</realname>
+                <uid>59</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_devicemgr</name>
+                <realname>Device Management Server</realname>
+                <uid>220</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_dovecot</name>
+                <realname>Dovecot Administrator</realname>
+                <uid>214</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_dovenull</name>
+                <realname>Dovecot Authentication</realname>
+                <uid>227</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_dpaudio</name>
+                <realname>DP Audio</realname>
+                <uid>215</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_eppc</name>
+                <realname>Apple Events User</realname>
+                <uid>71</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_ftp</name>
+                <realname>FTP Daemon</realname>
+                <uid>98</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_geod</name>
+                <realname>Geo Services Daemon</realname>
+                <uid>56</uid>
+                <home>/var/db/geod</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_installassistant</name>
+                <realname>Install Assistant</realname>
+                <uid>25</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_installer</name>
+                <realname>Installer</realname>
+                <uid>96</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_jabber</name>
+                <realname>Jabber XMPP Server</realname>
+                <uid>84</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_kadmin_admin</name>
+                <realname>Kerberos Admin Service</realname>
+                <uid>218</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_kadmin_changepw</name>
+                <realname>Kerberos Change Password Service</realname>
+                <uid>219</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_krb_anonymous</name>
+                <realname>Open Directory Kerberos Anonymous</realname>
+                <uid>234</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_krb_changepw</name>
+                <realname>Open Directory Kerberos Change Password Service</realname>
+                <uid>232</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_krb_kadmin</name>
+                <realname>Open Directory Kerberos Admin Service</realname>
+                <uid>231</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_krb_kerberos</name>
+                <realname>Open Directory Kerberos</realname>
+                <uid>233</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_krb_krbtgt</name>
+                <realname>Open Directory Kerberos Ticket Granting Ticket</realname>
+                <uid>230</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_krbtgt</name>
+                <realname>Kerberos Ticket Granting Ticket</realname>
+                <uid>217</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_launchservicesd</name>
+                <realname>_launchservicesd</realname>
+                <uid>239</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_lda</name>
+                <realname>Local Delivery Agent</realname>
+                <uid>211</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_locationd</name>
+                <realname>Location Daemon</realname>
+                <uid>205</uid>
+                <home>/var/db/locationd</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_lp</name>
+                <realname>Printing Services</realname>
+                <uid>26</uid>
+                <home>/var/spool/cups</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_mailman</name>
+                <realname>Mailman List Server</realname>
+                <uid>78</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_mcxalr</name>
+                <realname>MCX AppLaunch</realname>
+                <uid>54</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_mdnsresponder</name>
+                <realname>mDNSResponder</realname>
+                <uid>65</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_mysql</name>
+                <realname>MySQL Server</realname>
+                <uid>74</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_netbios</name>
+                <realname>NetBIOS</realname>
+                <uid>222</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_netstatistics</name>
+                <realname>Network Statistics Daemon</realname>
+                <uid>228</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_networkd</name>
+                <realname>Network Services</realname>
+                <uid>24</uid>
+                <home>/var/networkd</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_postfix</name>
+                <realname>Postfix Mail Server</realname>
+                <uid>27</uid>
+                <home>/var/spool/postfix</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_postgres</name>
+                <realname>PostgreSQL Server</realname>
+                <uid>216</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_qtss</name>
+                <realname>QuickTime Streaming Server</realname>
+                <uid>76</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_sandbox</name>
+                <realname>Seatbelt</realname>
+                <uid>60</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_screensaver</name>
+                <realname>Screensaver</realname>
+                <uid>203</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_scsd</name>
+                <realname>Service Configuration Service</realname>
+                <uid>31</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_securityagent</name>
+                <realname>SecurityAgent</realname>
+                <uid>92</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_serialnumberd</name>
+                <realname>Serial Number Daemon</realname>
+                <uid>58</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_softwareupdate</name>
+                <realname>Software Update Service</realname>
+                <uid>200</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_spotlight</name>
+                <realname>Spotlight</realname>
+                <uid>89</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_sshd</name>
+                <realname>sshd Privilege separation</realname>
+                <uid>75</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_svn</name>
+                <realname>SVN Server</realname>
+                <uid>73</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_taskgated</name>
+                <realname>Task Gate Daemon</realname>
+                <uid>13</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_teamsserver</name>
+                <realname>TeamsServer</realname>
+                <uid>94</uid>
+                <home>/var/teamsserver</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_timezone</name>
+                <realname>AutoTimeZoneDaemon</realname>
+                <uid>210</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_tokend</name>
+                <realname>Token Daemon</realname>
+                <uid>91</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_trustevaluationagent</name>
+                <realname>Trust Evaluation Agent</realname>
+                <uid>208</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_unknown</name>
+                <realname>Unknown User</realname>
+                <uid>99</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_update_sharing</name>
+                <realname>Update Sharing</realname>
+                <uid>95</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_usbmuxd</name>
+                <realname>iPhone OS Device Helper</realname>
+                <uid>213</uid>
+                <home>/var/db/lockdown</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_uucp</name>
+                <realname>Unix to Unix Copy Protocol</realname>
+                <uid>4</uid>
+                <home>/var/spool/uucp</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_warmd</name>
+                <realname>Warm Daemon</realname>
+                <uid>224</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_webauthserver</name>
+                <realname>Web Auth Server</realname>
+                <uid>221</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_windowserver</name>
+                <realname>WindowServer</realname>
+                <uid>88</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_www</name>
+                <realname>World Wide Web Server</realname>
+                <uid>70</uid>
+                <home>/Library/WebServer</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_xcsbuildagent</name>
+                <realname>Xcode Server Build Agent</realname>
+                <uid>237</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>_xcscredserver</name>
+                <realname>Xcode Server Credential Server</realname>
+                <uid>238</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>aaron</name>
+                <realname>Aaron Wilson</realname>
+                <uid>501</uid>
+                <home>/Users/aaron</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>true</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>daemon</name>
+                <realname>System Services</realname>
+                <uid>1</uid>
+                <home>/var/root</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>nobody</name>
+                <realname>Unprivileged User</realname>
+                <uid>-2</uid>
+                <home>/var/empty</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>false</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>orchard</name>
+                <realname>Management Account</realname>
+                <uid>502</uid>
+                <home>/Users/orchard</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>true</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+            <user>
+                <name>root</name>
+                <realname>System Administrator</realname>
+                <uid>0</uid>
+                <home>/var/root</home>
+                <home_size>-1MB</home_size>
+                <home_size_mb>-1</home_size_mb>
+                <administrator>true</administrator>
+                <filevault_enabled>false</filevault_enabled>
+            </user>
+        </local_accounts>
+    </groups_accounts>
+    <iphones>
+        <size>0</size>
+    </iphones>
+    <configuration_profiles>
+        <size>0</size>
+    </configuration_profiles>
+</computer>

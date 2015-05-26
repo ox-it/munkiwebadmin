@@ -10,6 +10,7 @@ from operator import attrgetter
 from manifests.models import Manifest
 
 from jssmanifests.models import JSSComputerAttributeType
+from lxml import etree
 
 import jss
 import plistlib
@@ -28,7 +29,8 @@ def manifest(request, manifest_name):
                                  url=settings.JSS_URL,
                                  ssl_verify=settings.JSS_VERIFY_CERT)
 
-        computer = jss_connection.Computer('udid=%s' % manifest_name.upper())
+        jcomputer = jss_connection.Computer('udid=%s' % manifest_name.upper())
+        computer = etree.fromstring(jcomputer.__str__())
        
         if settings.JSSMANIFESTS_DEBUG_DUMPJSSEA:
             _dump_computer_ea(manifest, computer.iter('extension_attribute') )

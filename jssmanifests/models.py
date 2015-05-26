@@ -6,7 +6,7 @@ class JSSComputerAttributeType(models.Model):
     label = models.CharField('Type Label', max_length=1024)
 
     # Data retrieved via a JSS record
-    jss_field = models.CharField('JSS Field name', max_length=1024, blank=True)
+    xpath_expression = models.CharField('XPath expression', max_length=1024, blank=True)
 
     api_endpoint = models.CharField('API Endpoint (data retrival)', max_length=1024,blank=True)
 
@@ -34,18 +34,13 @@ class JSSComputerAttributeType(models.Model):
        for ch in choices:
            choices_list.append('%s' % (ch,) )
 
-    def get_data(self,computer_record, key):
-        if self.jss_field:
-           return self.jss_extract(computer_record,key)
-   
-        return None 
+    def get_data(self, computer, key):
 
-    def jss_extract(self, computer, key):
-        rv = []
-        for computer_ea in computer.iter(self.jss_field):
-            if computer_ea.find('name').text == key:
-                rv.append(computer_ea)
-        
+        print self.xpath_expression
+        rv = computer.xpath(self.xpath_expression, key=key)
+
+        print rv
+
         return rv
 
 
@@ -68,7 +63,7 @@ class JSSComputerAttributeMapping(models.Model):
          models.ForeignKey(JSSComputerAttributeType) 
   
     jss_computer_attribute_key   = models.CharField('Attribute Key',
-                                                    max_length=1024)
+                                                    max_length=1024, blank=True)
     jss_computer_attribute_value = models.CharField('Attribute Value',
                                                     max_length=1024)
 
@@ -82,7 +77,8 @@ class JSSComputerAttributeMapping(models.Model):
     package_action = models.CharField('Package Action',
                         choices=PACKAGE_ACTIONS, blank=True, max_length=256)
 
-    manifest_name   = models.CharField('Manifest Name', max_length=1024, blank=True)
+    manifest_name   = models.CharField('Manifest Name', max_length=1024,
+                          blank=True) #, choices=_get_manifestlist())
 
     remove_from_xml   = models.BooleanField('Remove from Manifest')
 
@@ -112,9 +108,9 @@ class JSSComputerAttributeMapping(models.Model):
        if not self.is_in_site(site):
            return False 
        
-       elements =  self.jss_computer_attribute_type.get_data(computer,self.jss_computer_attribute_key);
-       for element in elements:
-           if    element.find('value').text and element.find('value').text == self.jss_computer_attribute_value:
+       elements = self.jss_computer_attribute_type.get_data(computer,self.jss_computer_attribute_key);
+       for value in elements:
+           if value == self.jss_computer_attribute_value:
                return True
        
        return False
