@@ -35,12 +35,7 @@ class JSSComputerAttributeType(models.Model):
            choices_list.append('%s' % (ch,) )
 
     def get_data(self, computer, key):
-
-        print self.xpath_expression
         rv = computer.xpath(self.xpath_expression, key=key)
-
-        print rv
-
         return rv
 
 
