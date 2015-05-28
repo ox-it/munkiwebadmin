@@ -14,9 +14,10 @@ class JSSComputerAttributeTypeAdmin(admin.ModelAdmin):
 
     fieldsets = [
         (None,               {'fields': ['label']}),
-        ('Retrieval information', {'fields': ['xpath_expression',
-                                              'xpath_needs_key',
-                                              'api_endpoint'] }),
+        ('Retrieval information', {'fields': ['computer_xpath',
+                                              'api_path',
+                                              'api_xpath',
+                                              'xpath_needs_key' ] }),
     ]
 
     def get_actions(self, request):

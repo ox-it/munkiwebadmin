@@ -8,11 +8,13 @@ class JSSComputerAttributeType(models.Model):
     label = models.CharField('Type Label', max_length=1024)
 
     # Data retrieved via a JSS record
-    xpath_expression = models.CharField('XPath expression', max_length=1024, blank=True)
+    computer_xpath = models.CharField('XPath expression', max_length=1024)
 
-    xpath_needs_key = models.BooleanField('Key required for expression',default=False)
+    api_path = models.CharField('API URI (api path to this object)', max_length=1024,blank=True)
+    api_xpath = models.CharField('API Xpath (expression to extract data from the API object)', max_length=1024,blank=True)
 
-    api_endpoint = models.CharField('API Endpoint (data retrival)', max_length=1024,blank=True)
+    xpath_needs_key = models.BooleanField('Key required for data extraction', default=False)
+
 
     class Meta:
        verbose_name        = 'Computer Attribute Type'
@@ -39,7 +41,7 @@ class JSSComputerAttributeType(models.Model):
            choices_list.append('%s' % (ch,) )
 
     def get_data(self, computer, key):
-        rv = computer.xpath(self.xpath_expression, key=key)
+        rv = computer.xpath(self.computer_xpath, key=key)
         return rv
 
 
