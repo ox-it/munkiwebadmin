@@ -1,5 +1,7 @@
 from django.db import models
 
+from manifests.models import Manifest
+
 # Create your models here.
 
 class JSSComputerAttributeType(models.Model):
@@ -7,6 +9,8 @@ class JSSComputerAttributeType(models.Model):
 
     # Data retrieved via a JSS record
     xpath_expression = models.CharField('XPath expression', max_length=1024, blank=True)
+
+    xpath_needs_key = models.BooleanField('Key required for expression',default=False)
 
     api_endpoint = models.CharField('API Endpoint (data retrival)', max_length=1024,blank=True)
 
