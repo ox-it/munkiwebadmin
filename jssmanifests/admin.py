@@ -10,6 +10,8 @@ from catalogs.models import Catalog
 from jssmanifests.models import JSSComputerAttributeType, JSSComputerAttributeMapping
 
 
+import jssmanifests.utils as utils
+
 class JSSComputerAttributeTypeAdmin(admin.ModelAdmin):
 
     fieldsets = [
@@ -28,10 +30,6 @@ class JSSComputerAttributeTypeAdmin(admin.ModelAdmin):
         return None
 
 
-def _get_manifestlist():
-    manifest_names = Manifest.list()
-    return map(lambda x: (x,x), sorted( manifest_names ))
-
 class JSSComputerAttributeMappingAdminForm(forms.ModelForm):
 
     class Meta:
@@ -39,10 +37,28 @@ class JSSComputerAttributeMappingAdminForm(forms.ModelForm):
             #'manifest_name': forms.widgets.Select( choices=_get_manifestlist() )
         }
 
+    def __init__(self, *args, **kwargs):
+        super(JSSComputerAttributeMappingAdminForm, self).__init__(*args, **kwargs)
+        self.fields['manifest_name'].widget = \
+            forms.widgets.Select( choices=utils.get_manifest_selectlist())
+        self.fields['catalog_name'].widget  = \
+            forms.widgets.Select( choices=utils.get_catalog_selectlist())
+        self.fields['package_name'].widget  = \
+            forms.widgets.Select( choices=utils.get_packagename_selectlist())
+
+    def clean_package_name(self):
+
+        package_name = self.cleaned_data['package_name']
+        package_name_list = utils.get_packagenamelist()
+
+        if package_name and mmckage_name_list.count(package_name) != 1:
+            raise forms.ValidationError( "Package name %(pname)s is not in list of packages", params = { 'pname': package_name } ) 
+
+
     def clean_manifest_name(self):
 
         manifest_name = self.cleaned_data['manifest_name']
-        manifest_list = Manifest.list()
+        manifest_list = utils.get_manifestlist()
 
         if manifest_name and manifest_list.count(manifest_name) != 1:
             raise forms.ValidationError( "Manifest name %(mname)s is not in list of manifests", params = { 'mname': manifest_name } ) 
@@ -52,7 +68,7 @@ class JSSComputerAttributeMappingAdminForm(forms.ModelForm):
     def clean_catalog_name(self):
 
         catalog_name = self.cleaned_data['catalog_name']
-        catalog_list = Catalog.list()
+        catalog_list = utils.catalog_list()
 
         if catalog_name and catalog_list.count(catalog_name) != 1:
             raise forms.ValidationError( "Catalog name %(cname)s is not in list of catalogs", params = { 'cname': catalog_name } ) 
@@ -74,7 +90,7 @@ class JSSComputerAttributeMappingAdminForm(forms.ModelForm):
                 validation_errors.append( forms.ValidationError( "Attribute type %(attribute_type)s requires a key for mapping", params = { 'attribute_type': jss_computer_attribute_type })  ) 
 
         if not jss_computer_attribute_type.xpath_needs_key and attribute_key:
-                validation_errors.append( forms.ValidationError( "Attribute type %(attribute_type)s does not requires a key for mapping", params = { 'attribute_type': jss_computer_attribute_type })  ) 
+                validation_errors.append( forms.ValidationError( "Attribute type %(attribute_type)s does not require a key for mapping", params = { 'attribute_type': jss_computer_attribute_type })  ) 
 
         # The following is long and ugly, but checks that the correct
         # set of fields is set for each mapping type

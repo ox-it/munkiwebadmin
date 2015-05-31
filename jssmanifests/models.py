@@ -74,12 +74,14 @@ class JSSComputerAttributeMapping(models.Model):
     catalog_name   = models.CharField('Catalog Name', max_length=1024,
                                        blank=True)
 
-    package_name   = models.CharField('Package Name', max_length=1024, blank=True)
+    package_name   = models.CharField('Package Name',
+                                          max_length=1024, blank=True)
+
     package_action = models.CharField('Package Action',
                         choices=PACKAGE_ACTIONS, blank=True, max_length=256)
 
     manifest_name   = models.CharField('Manifest Name', max_length=1024,
-                          blank=True) #, choices=_get_manifestlist())
+                                blank=True) 
 
     remove_from_xml   = models.BooleanField('Remove from Manifest')
 
