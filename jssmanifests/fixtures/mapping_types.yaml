@@ -3,11 +3,12 @@
     pk: 1
     fields:
         label: 'Extension Attibute'
-        xpath_expression: '//computer/extension_attributes/extension_attribute[name=$key]/value/text()'
-        api_endpoint: '/api/url'
+        computer_xpath: '//computer/extension_attributes/extension_attribute[name=$key]/value/text()'
+        api_path: '/api/url'
+        xpath_needs_key: true
   - model: jssmanifests.JSSComputerAttributeType
     pk: 2
     fields:
         label: 'Site'
-        xpath_expression: '//computer/general/site/name/text()'
-        api_endpoint: '/api/url'
+        computer_xpath: '//computer/general/site/name/text()'
+        api_path: '/api/url'
