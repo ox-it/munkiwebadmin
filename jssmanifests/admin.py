@@ -51,7 +51,7 @@ class JSSComputerAttributeMappingAdminForm(forms.ModelForm):
         package_name = self.cleaned_data['package_name']
         package_name_list = utils.get_packagenamelist()
 
-        if package_name and mmckage_name_list.count(package_name) != 1:
+        if package_name and package_name_list.count(package_name) != 1:
             raise forms.ValidationError( "Package name %(pname)s is not in list of packages", params = { 'pname': package_name } ) 
 
 
@@ -68,7 +68,7 @@ class JSSComputerAttributeMappingAdminForm(forms.ModelForm):
     def clean_catalog_name(self):
 
         catalog_name = self.cleaned_data['catalog_name']
-        catalog_list = utils.catalog_list()
+        catalog_list = utils.get_cataloglist()
 
         if catalog_name and catalog_list.count(catalog_name) != 1:
             raise forms.ValidationError( "Catalog name %(cname)s is not in list of catalogs", params = { 'cname': catalog_name } ) 
