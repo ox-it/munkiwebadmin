@@ -54,6 +54,7 @@ class JSSComputerAttributeMappingAdminForm(forms.ModelForm):
         if package_name and package_name_list.count(package_name) != 1:
             raise forms.ValidationError( "Package name %(pname)s is not in list of packages", params = { 'pname': package_name } ) 
 
+        return package_name
 
     def clean_manifest_name(self):
 
@@ -133,6 +134,7 @@ class JSSComputerAttributeMappingAdminForm(forms.ModelForm):
            if catalog_name:
                 validation_errors.append( forms.ValidationError( "Package mappings should not have a catalog name set") ) 
 
+           print package_name
            if not package_name:
                validation_errors.append( forms.ValidationError( "Package mappings should have a valid package name set") ) 
 
