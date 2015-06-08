@@ -145,17 +145,23 @@ class JSSComputerAttributeMapping(models.Model):
        return 
 
     def update_manifest_catalog(self, manifest):
+        if not manifest.has_key('catalogs'):
+           manifest['catalogs'] = []
+
         self._update_list(manifest['catalogs'], self.catalog_name)
 
         return
   
     def update_manifest_manifest(self, manifest):
+        if not manifest.has_key('included_manifests'):
+           manifest['included_manifests'] = []
+
         self._update_list(manifest['included_manifests'], self.manifest_name)
         return 
 
     def update_manifest_package(self, manifest):
-       if not manifest.has_key(self.package_action):
+        if not manifest.has_key(self.package_action):
            manifest[self.package_action] = []
 
-       self._update_list(manifest[self.package_action], self.package_name)
-       return 
+        self._update_list(manifest[self.package_action], self.package_name)
+        return 
