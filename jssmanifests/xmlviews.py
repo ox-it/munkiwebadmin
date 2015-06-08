@@ -5,7 +5,7 @@ from django.conf import settings
 
 from operator import attrgetter
 
-# Create your views here.
+import re
 
 from manifests.models import Manifest
 
@@ -24,35 +24,37 @@ def manifest(request, manifest_name):
         if not manifest:
             manifest = Manifest.read('site_default')
 
-        jss_connection = jss.JSS(user=settings.JSS_READONLY_USER,
+        # Only if the request matches an UDID (v4) the JSS will be queried
+        if re.search('[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}', manifest_name.lower()):
+            jss_connection = jss.JSS(user=settings.JSS_READONLY_USER,
                                  password=settings.JSS_READONLY_PASS,
                                  url=settings.JSS_URL,
                                  ssl_verify=settings.JSS_VERIFY_CERT)
 
-        jcomputer = jss_connection.Computer('udid=%s' % manifest_name.upper())
-        computer = etree.fromstring(jcomputer.__str__())
+            jcomputer = jss_connection.Computer('udid=%s' % manifest_name.upper())
+            computer = etree.fromstring(jcomputer.__str__())
        
-        if settings.JSSMANIFESTS_DEBUG_DUMPJSSEA:
-            _dump_computer_ea(manifest, computer.iter('extension_attribute') )
-
-        attribute_types = JSSComputerAttributeType.objects.all()
-
-        manifest['computer_matches'] = []
-        manifest_updates = []
-
-        for type in attribute_types:
             if settings.JSSMANIFESTS_DEBUG_DUMPJSSEA:
-                type.dump_debug_xml(manifest)
-            mappings = type.jsscomputerattributemapping_set.all()
-            for mapping in mappings:
-                if mapping.computer_match(computer):
-                    if settings.JSSMANIFESTS_DEBUG_DUMPJSSEA:
-                        manifest['computer_matches'].append( '%s' % mapping)
-                    manifest_updates.append(mapping)
+                _dump_computer_ea(manifest, computer.iter('extension_attribute') )
 
-        manifest_updates.sort( key=attrgetter('priorty') )
-        for manifest_update in manifest_updates:
-            manifest_update.apply_mapping(manifest)
+            attribute_types = JSSComputerAttributeType.objects.all()
+
+            manifest['computer_matches'] = []
+            manifest_updates = []
+
+            for type in attribute_types:
+                if settings.JSSMANIFESTS_DEBUG_DUMPJSSEA:
+                    type.dump_debug_xml(manifest)
+                mappings = type.jsscomputerattributemapping_set.all()
+                for mapping in mappings:
+                    if mapping.computer_match(computer):
+                        if settings.JSSMANIFESTS_DEBUG_DUMPJSSEA:
+                            manifest['computer_matches'].append( '%s' % mapping)
+                        manifest_updates.append(mapping)
+
+            manifest_updates.sort( key=attrgetter('priorty') )
+            for manifest_update in manifest_updates:
+                manifest_update.apply_mapping(manifest)
 
         response = HttpResponse(content_type='application/xml')
         plistlib.writePlist(manifest, response)
