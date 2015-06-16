@@ -1,0 +1,39 @@
+---
+  - model: auth.User
+    pk: 1
+    fields:
+#        password: superted
+        password: pbkdf2_sha256$20000$H2WjvwxB8rgr$AoCodFturzkLFipqiEVNkVqfDTsfUERGfpTOpQ6smyk=
+        is_superuser: 1
+        is_staff: 1
+        is_active: 1
+        username: superted
+        first_name: Super
+        last_name: Ted
+        email: super@ted.heros
+  - model: auth.User
+    pk: 2
+    fields:
+#        password: bananaman
+        password: pbkdf2_sha256$20000$gqx4u3ZQsXJ2$0Cry6mVYIxjkpo/yMt5jvSBPR89uKmHbrayS9r2KRDU=
+        is_superuser: 0
+        is_staff: 1
+        is_active: 1
+        username: bananaman
+        first_name: Eric
+        last_name: Wimp
+        email: eric@bananaman.heros
+  - model: auth.User
+    pk: 3
+    fields:
+#        password: mortal$20000$yka3EC0ccJIj$4ZPt1AA2Wzc3FlrmQ89pLLUS97KQiSGe6FE8Ue6JXXs=
+        password: pbkdf2_sha256$20000$yka3EC0ccJIj$4ZPt1AA2Wzc3FlrmQ89pLLUS97KQiSGe6FE8Ue6JXXs=
+        is_superuser: 0
+        is_staff: 0
+        is_active: 1
+        username: mortal
+        first_name: Mere
+        last_name: Mortal
+        email: simple@human.humans
+  
+  

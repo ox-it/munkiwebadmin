@@ -76,7 +76,8 @@ class MunkiGit:
             action = 'did something with'
 
         # determine the path relative to REPO_DIR for the file at aPath
-        manifests_path = os.path.join(REPO_DIR, 'manifests')
+        #manifests_path = os.path.join(REPO_DIR, 'manifests')
+        manifests_path = os.path.join(settings.MUNKI_REPO_DIR, 'manifests')
         itempath = aPath
         if aPath.startswith(manifests_path):
             itempath = aPath[len(manifests_path):]
@@ -130,12 +131,12 @@ class Manifest(object):
     def __pathForManifestNamed(aManifestName):
         '''Returns the path to a manifest given the manifest's name'''
         return os.path.join(
-            REPO_DIR, 'manifests', aManifestName.replace(':', '/'))
+            settings.MUNKI_REPO_DIR, 'manifests', aManifestName.replace(':', '/'))
 
     @classmethod
     def list(cls):
         '''Returns a list of available manifests'''
-        manifests_path = os.path.join(REPO_DIR, 'manifests')
+        manifests_path = os.path.join(settings.MUNKI_REPO_DIR, 'manifests')
         manifests = []
         skipdirs = ['.svn', '.git', '.AppleDouble']
         for dirpath, dirnames, filenames in os.walk(manifests_path):
