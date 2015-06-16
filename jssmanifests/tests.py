@@ -3,11 +3,18 @@ from django.test import Client
 from django.conf import settings
 from django.db.utils import IntegrityError
 
+from lxml import etree
+
+
 import os
 
 from jssmanifests.models import JSSComputerAttributeType,JSSComputerAttributeMapping
 
+from manifests.models import Manifest
+
 # Create your tests here.
+cwd = os.path.dirname(os.path.abspath(__file__))
+test_repo_dir = 'example-data/repo/'
 
 class JSSComputerAttributeTypeTest(TestCase):
    
@@ -90,23 +97,15 @@ class JSSComputerAttributeMappingTest(TestCase):
             remove_from_xml = 0)
 
     def test_create_mapping_empty(self):
-
         with self.assertRaisesMessage(IntegrityError, '(1048, "Column \'jss_computer_attribute_type_id\' cannot be null")'): JSSComputerAttributeMapping.objects.create()
        
-# 
-cwd = os.path.dirname(os.path.abspath(__file__))
-test_repo_dir = 'example-data/repo/'
 @override_settings(MUNKI_REPO_DIR=cwd + '/' + test_repo_dir )
 class JSSComputerAttributeMappingFormTest(TestCase):
 
-    fixtures = [ 'mapping_types', 'test_user', ]
+    fixtures = [ 'mapping_types', 'test_user', 'test_mappings',  ]
 
     def setUp(self):
         self.client = Client()
-
-    # Because I had some issues with this ...
-    def test_override(self):
-        self.assertEqual(settings.MUNKI_REPO_DIR,  cwd + '/' + test_repo_dir )
 
     def test_can_login_as_staffuser(self):
         rc = self.client.login(username='bananaman', password='bananaman')
@@ -120,20 +119,153 @@ class JSSComputerAttributeMappingFormTest(TestCase):
 
     def test_can_client_needs_login(self):
         rc = self.client.get('/admin/jssmanifests/')
- 
 
         self.assertEqual(rc.status_code, 302)
         self.assertEqual(rc.has_header('Location'), True)
         self.assertEqual(rc.get('Location'), 'http://testserver/admin/login/?next=/admin/jssmanifests/')
-   
+
+    def test_can_xml_without_login(self):
   
         sitedefault = open('jssmanifests/example-data/repo/manifests/site_default')
         sitedefault_content = sitedefault.read()
-        # However, jss manifests do not need auth
         rc = self.client.get('/jssmanifests/xml/site_default')
         self.assertEqual(rc.status_code, 200)
         self.assertEqual(rc.content, sitedefault_content) # how do we introduce tests ?
+  
+# 
+@override_settings(MUNKI_REPO_DIR=cwd + '/' + test_repo_dir )
+class JSSComputerManifestTests(TestCase):
 
+    fixtures = [ 'mapping_types', 'test_mappings', ]
+
+    def setUp(self):
+        self.client = Client()
+
+        computer_xml_file = open('jssmanifests/example-data/00000000-0000-1000-8000-000C29CDACC7')
+        self.computer = etree.fromstring( computer_xml_file.read() )
+
+
+    # Because I had some issues with this ...
+    def test_override(self):
+        self.assertEqual(settings.MUNKI_REPO_DIR,  cwd + '/' + test_repo_dir )
+
+    def test_extension_attribute_mappings_ea(self):
+        mapping_match = JSSComputerAttributeMapping.objects.get(id=1)
+        self.assertEqual(mapping_match.computer_match(self.computer), True) 
+
+        mapping_mismatch = JSSComputerAttributeMapping.objects.get(id=4)
+        self.assertEqual(mapping_mismatch.computer_match(self.computer), False) 
+
+        assert_test = {} # empty manifest, so be lazy
+        assert_test['catalogs'] = []
+        assert_test['catalogs'].append('ea_match_catalog')
+
+        test_manifest = {}
+        mapping_mismatch.apply_mapping(test_manifest)
+        self.assertEqual(test_manifest, assert_test )
+
+        assert_test = Manifest.read('site_default')
+        assert_test['catalogs'].append('ea_match_catalog')
+
+        test_manifest = Manifest.read('site_default')
+        mapping_match.apply_mapping(test_manifest)
+
+    def test_site_mappings(self):
+        mapping_match = JSSComputerAttributeMapping.objects.get(id=2)
+        self.assertEqual(mapping_match.computer_match(self.computer), True) 
+
+        mapping_mismatch = JSSComputerAttributeMapping.objects.get(id=5)
+        self.assertEqual(mapping_mismatch.computer_match(self.computer), False) 
+
+        assert_test = {} # empty manifest, so be lazy
+        assert_test['included_manifests'] = []
+        assert_test['included_manifests'].append('site_match_manifest')
+
+        test_manifest = {}
+        mapping_mismatch.apply_mapping(test_manifest)
+        self.assertEqual(test_manifest, assert_test)
+
+        assert_test = Manifest.read('site_default')
+        assert_test['included_manifests'].append('site_match_manifest')
+
+        test_manifest = Manifest.read('site_default')
+        mapping_match.apply_mapping(test_manifest)
+
+        self.assertEqual(test_manifest, assert_test )
+
+    def test_department_mappings(self):
+        mapping_match = JSSComputerAttributeMapping.objects.get(id=3)
+        self.assertEqual(mapping_match.computer_match(self.computer), True) 
+
+        mapping_mismatch = JSSComputerAttributeMapping.objects.get(id=6)
+        self.assertEqual(mapping_mismatch.computer_match(self.computer), False) 
+
+        assert_test = {} # empty manifest, so be lazy
+        assert_test['managed_installs'] = []
+        assert_test['managed_installs'].append('department_one_package')
+
+        test_manifest = {}
+        mapping_mismatch.apply_mapping(test_manifest)
+        self.assertEqual(test_manifest, assert_test)
+
+        assert_test = Manifest.read('site_default')
+        assert_test['managed_installs'].append('department_one_package')
+
+        test_manifest = Manifest.read('site_default')
+        mapping_match.apply_mapping(test_manifest)
+
+        self.assertEqual(test_manifest, assert_test )
+
+    def test_building_mappings(self):
+        mapping_match = JSSComputerAttributeMapping.objects.get(id=7)
+        self.assertEqual(mapping_match.computer_match(self.computer), True) 
+
+        mapping_mismatch = JSSComputerAttributeMapping.objects.get(id=8)
+        self.assertEqual(mapping_mismatch.computer_match(self.computer), False) 
+
+        assert_test = {} # empty manifest, so be lazy
+        assert_test['optional_installs'] = []
+        assert_test['optional_installs'].append('building_two_package')
+
+        test_manifest = {}
+        mapping_mismatch.apply_mapping(test_manifest)
+        self.assertEqual(test_manifest, assert_test)
+
+        assert_test = Manifest.read('site_default')
+        assert_test['optional_installs'].append('building_two_package')
+
+        test_manifest = Manifest.read('site_default')
+        mapping_match.apply_mapping(test_manifest)
+
+        self.assertEqual(test_manifest, assert_test )
+
+    def test_groups_mappings(self):
+        mapping_match = JSSComputerAttributeMapping.objects.get(id=9)
+        self.assertEqual(mapping_match.computer_match(self.computer), True) 
+
+        mapping_mismatch = JSSComputerAttributeMapping.objects.get(id=10)
+        self.assertEqual(mapping_mismatch.computer_match(self.computer), False) 
+
+        assert_test = {} # empty manifest, so be lazy
+        assert_test['managed_uninstalls'] = []
+        assert_test['managed_uninstalls'].append('group_package')
+
+        test_manifest = {}
+        mapping_mismatch.apply_mapping(test_manifest)
+        self.assertEqual(test_manifest, assert_test)
+
+        assert_test = Manifest.read('site_default')
+        assert_test['managed_uninstalls'].append('group_package')
+
+        test_manifest = Manifest.read('site_default')
+        mapping_match.apply_mapping(test_manifest)
+
+        self.assertEqual(test_manifest, assert_test )
+
+
+
+# 
+#cwd = os.path.dirname(os.path.abspath(__file__))
 
 
 # Later ....

@@ -28,6 +28,6 @@
     pk: 5
     fields:
         label: 'Group'
-        computer_xpath: '//computer/groups_accountscomputer_group_memberships/group[name=$key]'
+        computer_xpath: '//computer/groups_accounts/computer_group_memberships/group/text()'
         api_path: '/api/url'
-        xpath_needs_key: true
+        xpath_needs_key: false

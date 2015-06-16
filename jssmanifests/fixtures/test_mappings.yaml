@@ -1,0 +1,89 @@
+---
+  - model: jssmanifests.JSSComputerAttributeMapping
+    pk: 1
+    fields:
+        jss_computer_attribute_key: Extension Attribute - String
+        jss_computer_attribute_value: Test
+        manifest_element_type: c
+        catalog_name: ea_match_catalog
+        jss_computer_attribute_type_id: 1
+        remove_from_xml: 0
+  - model: jssmanifests.JSSComputerAttributeMapping
+    pk: 2
+    fields:
+        jss_computer_attribute_value: Test Site
+        manifest_element_type: m
+        manifest_name: site_match_manifest
+        jss_computer_attribute_type_id: 2
+        remove_from_xml: 0
+  - model: jssmanifests.JSSComputerAttributeMapping
+    pk: 3
+    fields:
+        jss_computer_attribute_value: Department One
+        manifest_element_type: p
+        package_name: department_one_package
+        package_action: managed_installs
+        jss_computer_attribute_type_id: 3
+        remove_from_xml: 0
+  - model: jssmanifests.JSSComputerAttributeMapping
+    pk: 4
+    fields:
+        jss_computer_attribute_key: Extension Attribute - String
+        jss_computer_attribute_value: Mismatch
+        manifest_element_type: c
+        catalog_name: ea_match_catalog
+        jss_computer_attribute_type_id: 1
+        remove_from_xml: 0
+  - model: jssmanifests.JSSComputerAttributeMapping
+    pk: 5
+    fields:
+        jss_computer_attribute_value: Mismatch
+        manifest_element_type: m
+        manifest_name: site_match_manifest
+        jss_computer_attribute_type_id: 2
+        remove_from_xml: 0
+  - model: jssmanifests.JSSComputerAttributeMapping
+    pk: 6
+    fields:
+        jss_computer_attribute_value: MisMatch
+        manifest_element_type: p
+        package_name: department_one_package
+        package_action: managed_installs
+        jss_computer_attribute_type_id: 3
+        remove_from_xml: 0
+  - model: jssmanifests.JSSComputerAttributeMapping
+    pk: 7
+    fields:
+        jss_computer_attribute_value: Current Building
+        manifest_element_type: p
+        package_name: building_two_package
+        package_action: optional_installs
+        jss_computer_attribute_type_id: 4
+        remove_from_xml: 0
+  - model: jssmanifests.JSSComputerAttributeMapping
+    pk: 8
+    fields:
+        jss_computer_attribute_value: There is a place for us somewhere
+        manifest_element_type: p
+        package_name: building_two_package
+        package_action: optional_installs
+        jss_computer_attribute_type_id: 4
+        remove_from_xml: 0
+  - model: jssmanifests.JSSComputerAttributeMapping
+    pk: 9
+    fields:
+        jss_computer_attribute_value: All Managed Clients
+        manifest_element_type: p
+        package_name: group_package
+        package_action: managed_uninstalls
+        jss_computer_attribute_type_id: 5
+        remove_from_xml: 0
+  - model: jssmanifests.JSSComputerAttributeMapping
+    pk: 10
+    fields:
+        jss_computer_attribute_value: I am a free man, not a group
+        manifest_element_type: p
+        package_name: group_package
+        package_action: managed_uninstalls
+        jss_computer_attribute_type_id: 5
+        remove_from_xml: 0
