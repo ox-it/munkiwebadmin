@@ -7,14 +7,30 @@ from manifests.models import Manifest
 class JSSComputerAttributeType(models.Model):
     label = models.CharField('Type Label', max_length=1024)
 
-    # Data retrieved via a JSS record
+    # This is is the XPath expression used to retrieve data from
+    # a JSS computer recordData retrieved via a Computer JSS record
+    # e.g //computer/general/site/name/text()
     computer_xpath = models.CharField('XPath expression', max_length=1024)
 
-    api_path = models.CharField('API URI (api path to this object)', max_length=1024,blank=True)
-    api_xpath = models.CharField('API Xpath (expression to extract data from the API object)', max_length=1024,blank=True)
+    # The following two variables are for use in order to give options
+    # to a user. The idea is that we will query the the JSS using the 
+    # api_path to get an XML result. The api_xpath then lets us extract
+    # suitable values to present to the user to choose on a per-mapping basis
+    api_path = models.CharField('API URI (api path to this object)',
+                                max_length=1024,
+                                blank=True)
+    api_xpath = models.CharField(
+        'API Xpath (expression to extract data from the API object)',
+         max_length=1024,blank=True)
 
-    xpath_needs_key = models.BooleanField('Key required for data extraction', default=False)
-
+    # For some JSS items, we need a key to pick out the correct value(s) to
+    # use - e.g. with an extension attribute we need to know the attribute 
+    # name and then pull out the value for comparision. This flag says
+    # whether or not a key is required; the default is that a key is not
+    # required
+    xpath_needs_key = models.BooleanField(
+        'Key required for data extraction from xpath',
+        default=False)
 
     class Meta:
        verbose_name        = 'Computer Attribute Type'
@@ -62,6 +78,9 @@ class JSSComputerAttributeMapping(models.Model):
 
     jss_computer_attribute_type = \
          models.ForeignKey(JSSComputerAttributeType) 
+
+    jss_computer_attribute_type.short_description = 'Computer Attribute Type'
+
   
     jss_computer_attribute_key   = models.CharField('Attribute Key',
                                                     max_length=1024, blank=True)
@@ -88,6 +107,9 @@ class JSSComputerAttributeMapping(models.Model):
     priorty  = models.IntegerField('Priorty', default = 0)
 
     site   = models.CharField('Site', max_length=1024, blank=True)
+
+    # This is to let people temporarily enable and disable mappings
+    enabled = models.BooleanField('Mapping enabled', default=True)
 
     class Meta:
        verbose_name        = 'Computer Attribute Mapping'
@@ -119,6 +141,9 @@ class JSSComputerAttributeMapping(models.Model):
        return False
 
     def apply_mapping(self,manifest):
+        if not self.enabled:
+            return
+
         if self.manifest_element_type == 'c':
             self.update_manifest_catalog(manifest)
 

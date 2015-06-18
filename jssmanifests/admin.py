@@ -32,11 +32,6 @@ class JSSComputerAttributeTypeAdmin(admin.ModelAdmin):
 
 class JSSComputerAttributeMappingAdminForm(forms.ModelForm):
 
-    class Meta:
-        widgets = {
-            #'manifest_name': forms.widgets.Select( choices=_get_manifestlist() )
-        }
-
     def __init__(self, *args, **kwargs):
         super(JSSComputerAttributeMappingAdminForm, self).__init__(*args, **kwargs)
         self.fields['manifest_name'].widget = \
@@ -158,6 +153,7 @@ class JSSComputerAttributeMappingAdminForm(forms.ModelForm):
        
 
 
+
 class JSSComputerAttributeMappingAdmin(admin.ModelAdmin):
 
     form = JSSComputerAttributeMappingAdminForm
@@ -170,12 +166,40 @@ class JSSComputerAttributeMappingAdmin(admin.ModelAdmin):
                                           'remove_from_xml',
                                           'priorty',
                                           'site',
+                                          'enabled',
             ]}),
         ('Catalog Settings', {'fields': [ 'catalog_name', ] } ),
         ('Manifest Settings', {'fields': ['manifest_name', ] } ),
         ('Package Settings', {'fields': ['package_name',
                                          'package_action'] }),
     ]
+
+    list_display = ('enabled', 'jss_computer_attribute_type', 'jss_computer_attribute_key',  'jss_computer_attribute_value', 'manifest_element_type')
+
+#   Bulk actions
+#   Enable selected mappings
+    def bulk_enable_attribute_mappings(self, request, queryset):
+        self._bulk_enable_disable(request, queryset, True, 'enable')
+    bulk_enable_attribute_mappings.short_description = "Enable selected mappings"
+#   Disable selected mappings
+    def bulk_disable_attribute_mappings(self, request, queryset):
+        self._bulk_enable_disable(request, queryset, False, 'disable')
+
+    bulk_disable_attribute_mappings.short_description = "Disable selected mappings"
+
+    def _bulk_enable_disable(self, request, queryset, flag, action):
+        rows_updated = queryset.update(enabled=flag)
+        if rows_updated == 1:
+            message_bit = "1 mapping was"
+        else:
+            message_bit = "%s mapping were" % rows_updated
+
+        self.message_user(request, "%s successfully marked as %s." \
+             % (message_bit, action) )
+
+
+    actions = [ 'bulk_enable_attribute_mappings',
+                'bulk_disable_attribute_mappings' ]
 
 admin.site.register(JSSComputerAttributeType, JSSComputerAttributeTypeAdmin)
 admin.site.register(JSSComputerAttributeMapping, JSSComputerAttributeMappingAdmin)
