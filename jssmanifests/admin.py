@@ -174,7 +174,7 @@ class JSSComputerAttributeMappingAdmin(admin.ModelAdmin):
                                          'package_action'] }),
     ]
 
-    list_display = ('enabled', 'jss_computer_attribute_type', 'jss_computer_attribute_key',  'jss_computer_attribute_value', 'manifest_element_type')
+    list_display = ('__str__', 'enabled')
 
 #   Bulk actions
 #   Enable selected mappings

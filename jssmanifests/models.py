@@ -116,10 +116,40 @@ class JSSComputerAttributeMapping(models.Model):
        verbose_name_plural = 'Computer Attribute Mappings'
 
     def __unicode__(self):
-        return '%s: %s -> %s (%s)' % ( self.jss_computer_attribute_type.label, 
-               self.jss_computer_attribute_key,
-               self.jss_computer_attribute_value,
-               self.manifest_element_type)
+        if self.jss_computer_attribute_type.xpath_needs_key: 
+            return '%s: If %s matches %s then %s %s ' \
+                % ( self.jss_computer_attribute_type.label, 
+                    self.jss_computer_attribute_key,
+                    self.jss_computer_attribute_value,
+                    self.action(),
+                    self.mapping_description())
+
+        return 'If %s matches %s then %s %s' \
+                % ( self.jss_computer_attribute_type.label, 
+                    self.jss_computer_attribute_value,
+                    self.action(),
+                    self.mapping_description())
+
+    def action(self):
+        if self.remove_from_xml:
+            return 'remove'
+
+        return 'add'
+
+    def mapping_description(self):
+        if self.manifest_element_type == 'c':
+            type    = 'catalog'
+            element = self.catalog_name
+
+        if self.manifest_element_type == 'm':
+            type    = 'manifest'
+            element = self.manifest_name
+
+        if self.manifest_element_type == 'p':
+            type    = 'package'
+            element = '%s to %s' % ( self.package_name, self.package_action)
+
+        return '%s: %s' % (type, element)     
 
     def is_in_site(self,site):
         if not self.site or self.site == site:
