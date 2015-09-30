@@ -1,6 +1,10 @@
 from django.http import HttpResponse
+from django.template import RequestContext
+from django.core.context_processors import csrf
 from django.shortcuts import render_to_response
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
+from django.contrib.auth.models import Permission
+from django.contrib.auth.models import User
 from models import Catalog
 from django.utils.datastructures import SortedDict
 
@@ -46,11 +50,17 @@ def trimVersionString(version_string):
     return '.'.join(version_parts)
 
 
-@login_required                              
+@login_required
+@permission_required('catalogs.can_view_catalogs', login_url='/login/')                             
 def item_detail(request, catalog_name, item_index):
     catalog_item = Catalog.item_detail(catalog_name, item_index)
     featured_keys = ['name', 'version', 'display_name', 
-                     'description', 'catalogs']
+                     'description', 'catalogs', 'icon_name']
+    
+    # get icon
+    if not "icon_name" in catalog_item:
+        catalog_item["icon_name"] = ""
+
     # sort the item by key so keys are displayed
     # in expected order
     sorted_dict = SortedDict()
@@ -62,11 +72,14 @@ def item_detail(request, catalog_name, item_index):
     for key in key_list:
         if key not in featured_keys:
             sorted_dict[key] = catalog_item[key]
-    return render_to_response('catalogs/item_detail.html', 
-                              {'catalog_item': sorted_dict})
+
+    c = RequestContext(request,{'catalog_item': sorted_dict})
+    c.update(csrf(request))
+    return render_to_response('catalogs/item_detail.html', c)
                               
 
 @login_required
+@permission_required('catalogs.can_view_catalogs', login_url='/login/')
 def catalog_view(request, catalog_name=None, item_index=None):
     catalog_list = Catalog.list()
     if request.is_ajax():
@@ -75,26 +88,38 @@ def catalog_view(request, catalog_name=None, item_index=None):
     catalog = None
     catalog_item = None
     if not catalog_name:
-        if 'production' in catalog_list:
-            catalog_name = 'production'
-        else:
-            catalog_name = catalog_list[0]
+        catalog_name = "all"
+
     catalog = Catalog.detail(catalog_name)
+
+    catalog_items = list()
+    for item in catalog:
+        if 'display_name' not in item:
+            item['display_name'] = item['name']
+        if item.display_name not in catalog_items:
+            catalog_items.append(item.display_name) 
+    catalog_items_json = json.dumps(catalog_items)
+
     if item_index:
         catalog_item = Catalog.item_detail(catalog_name, item_index)
-    return render_to_response('catalogs/catalog.html',
-                          {'catalog_list': catalog_list,
-                           'catalog_name': catalog_name,
-                           'catalog': catalog,
-                           'item_index': item_index,
-                           'catalog_item': catalog_item,
-                           'user': request.user,
-                           'page': 'catalogs'})
-    #else:
-    #    return render_to_response('catalogs/index.html',
-    #                              {'catalog_list': catalog_list,
-    #                               'user': request.user,
-    #                               'page': 'catalogs'})
-        
-    
-                              
+
+    # get icon
+    counter = 0
+    for item in catalog:
+        if "icon_name" in item:
+            icon = Catalog.get_icon(item.icon_name)
+        else:
+            icon = Catalog.get_icon(item.name)
+        catalog[counter].icon_name = icon
+        counter += 1
+
+    c = RequestContext(request,{'catalog_list': catalog_list,
+                                'catalog_name': catalog_name,
+                                'catalog': catalog,
+                                'item_index': item_index,
+                                'catalog_item': catalog_item,
+                                'catalog_items': catalog_items_json,
+                                'user': request.user,
+                                'page': 'catalogs'})
+    c.update(csrf(request))
+    return render_to_response('catalogs/catalog.html', c)

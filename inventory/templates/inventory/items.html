@@ -3,15 +3,14 @@
 {% load url from future %}
 {% block java_script %}
 {% load static %}
-<script type='text/javascript' 
-  src='{% get_static_prefix %}js/items.js'>
-</script>
+<script type='text/javascript' src='{% get_static_prefix %}js/items.js'></script>
 {% endblock %}
 
+<!-- page title -->
+{% block page_title %}<a href="{% url 'inventory.views.items' %}" class="navbar-brand" >Inventory</a>{% endblock %}
+
 {% block content %}
-<h3>Inventory items <span id="item-count-badge" class="badge badge-info"></span></h3>
-<p/>
-<table id='inventory-items-table' class='table table-striped table-condensed'>
+<table id='inventory-items-table' class='table table-condensed table-hov'>
     <thead>
         <tr><th>Name</th><th>Version(s)</th></tr>
     </thead>

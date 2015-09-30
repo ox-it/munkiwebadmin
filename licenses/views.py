@@ -1,20 +1,28 @@
 from django.http import HttpResponse, HttpRequest, HttpResponseRedirect
+from django.template import RequestContext
 from django.shortcuts import render_to_response
+from django.core.context_processors import csrf
 from django.http import Http404
 from django.contrib.auth.decorators import login_required, permission_required
+from django.contrib.auth.models import Permission
+from django.contrib.auth.models import User
 
 import plistlib
 import json
 
 from models import License
 
+@login_required
+@permission_required('licenses.can_view_licenses', login_url='/login/')
 def index(request):
     '''MWA index page for licenses.'''
     all_licenses = License.objects.all()
-    return render_to_response('licenses/index.html', 
-        {'licenses': all_licenses,
-         'user': request.user,
-         'page': 'licenses'})
+
+    c = RequestContext(request,{'licenses': all_licenses,
+                                'user': request.user,
+                                'page': 'licenses'})
+    c.update(csrf(request))
+    return render_to_response('licenses/index.html', c)
 
 
 def available(request, item_name=''):
@@ -43,10 +51,10 @@ def available(request, item_name=''):
             info[license.item_name] = license.available()
             
     if output_style == 'json':
-        return HttpResponse(json.dumps(info), mimetype='application/json')
+        return HttpResponse(json.dumps(info), content_type='application/json')
     else:
         return HttpResponse(plistlib.writePlistToString(info),
-                            mimetype='application/xml')
+                            content_type='application/xml')
 
 
 def usage(request, item_name=''):
@@ -69,7 +77,7 @@ def usage(request, item_name=''):
         except (License.DoesNotExist):
             info[name] = {}
     if output_style == 'json':
-        return HttpResponse(json.dumps(info), mimetype='application/json')
+        return HttpResponse(json.dumps(info), content_type='application/json')
     else:
         return HttpResponse(plistlib.writePlistToString(info),
-                            mimetype='application/xml')
+                            content_type='application/xml')

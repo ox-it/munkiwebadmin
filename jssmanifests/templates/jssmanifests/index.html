@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+
+{% block java_script %}
+{% load static %}
+<script type="text/javascript">
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+{% endblock java_script %}
+
+{% block extra_style %}
+<link rel="stylesheet" type="text/css" href="{% get_static_prefix %}css/jssmanifests.css" />
+{% endblock %}
+
+<!-- Page title -->
+{% block page_title %}<a href="{% url 'jssmanifests.views.index' %}" class="navbar-brand" >JSS Mappings</a>{% endblock %}
+
+{% block navbar-top_extensions %}
+{% comment %}
+<li id="list" class="sidebar-search hidden-xs">
+    <a href="#" id="list"><span class="glyphicon glyphicon-th-list"></span> List</a>
+</li>
+<li id="grid" class="sidebar-search hidden-xs">
+    <a href="#" id="grid"><span class="glyphicon glyphicon-th"></span> Grid</a>
+</li>
+{% endcomment %}
+{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-12 col-xs-12">
+      <h1>JSS Computer Attribute Mappings</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 col-xs-12">
+      <div id="listview" class="table-responsive">
+      <table class="table table-condensed table-hover table-striped"
+        id="dataTables-jssmappings">
+      <thead>
+      <tr>
+        <th></th>
+        <th></th>
+        <th>JSS Attribute Type</th>
+        <th>Value</th>
+        <th>Type</th>
+        <th>Priority</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% for mapping in mapping_list %}
+      <tr class="{% if not mapping.enabled %}disabled {% elif mapping.remove_from_xml %}remove {% endif %}">
+        <td>{% if mapping.enabled %}
+        <i class="fa fa-check-square-o" data-toggle="tooltip" data-placement="bottom" 
+           title="This mapping is enabled."></i>
+        {% else %}
+        <i class="fa fa-square-o" data-toggle="tooltip" data-placement="bottom" 
+           title="This mapping is disabled."></i>
+        {% endif %}</td>
+        <td>
+        {% if mapping.remove_from_xml %}
+        <i class="fa fa-remove fa-2x" data-toggle="tooltip" data-placement="bottom" 
+           title="Remove the mapping from the computer manifest if existent."></i>
+        {% endif %}
+        </td>
+        <td>{{ mapping.jss_computer_attribute_type.label }}</td>
+        <td>{% if mapping.jss_computer_attribute_type.xpath_needs_key %}
+        {{ mapping.jss_computer_attribute_key }} : 
+        {{ mapping.jss_computer_attribute_value }}
+        {% else %}
+        {{ mapping.jss_computer_attribute_value }}
+        {% endif %}
+        </td>
+        <td>
+        {% if mapping.manifest_element_type == 'c' %}
+        <i class="fa fa-list-alt" data-toggle="tooltip" data-placement="bottom" 
+           title="Catalogue: {{ mapping.catalog_name }}"></i>
+        {% elif mapping.manifest_element_type == 'm' %}
+        <i class="fa fa-edit" data-toggle="tooltip" data-placement="bottom" 
+           title="Manifest: {{ mapping.manifest_name }}"></i>
+        {% else %}
+        <i class="fa fa-cube" data-toggle="tooltip" data-placement="bottom" 
+           title="Package: {{ mapping.package_name }} as {{ mapping.package_action }}"></i>
+        {% endif %}
+        </td>
+        <td>
+        {{ mapping.priority }}
+        </td>
+        <td>
+          <div class="pull-left btn-group" id="actions">
+          <a class="btn btn-sm btn-default btn-edit" 
+            href="update/{{ mapping.id }}/">
+            <i class="fa fa-pencil-square"></i> Edit
+          </a>
+          {% if mapping.enabled %}
+          <a class="btn btn-sm btn-default btn-disable" 
+            href="toggle-enabled/{{ mapping.id }}">
+            <i class="fa fa-toggle-off"></i>
+          </a>
+          {% else %}
+          <a class="btn btn-sm btn-default btn-enable" 
+            href="toggle-enabled/{{ mapping.id }}">
+              <i class="fa fa-toggle-on"></i>
+          </a>           
+          {% endif %}
+          <a class="btn btn-sm btn-default btn-delete"
+            href="delete/{{ mapping.id }}/">
+            <span class="glyphicon glyphicon-trash"></span>
+          </a>
+          </div>
+        </td>
+      </tr>
+      {% endfor %}
+      </table>
+      </div><!-- listview -->
+    </div><!-- col-md-12 col-xs-12 -->
+  </div><!-- row -->
+{% endblock content %}

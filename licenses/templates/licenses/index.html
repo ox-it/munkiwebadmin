@@ -1,19 +1,11 @@
 {% extends 'base.html' %}
 
 {% block java_script %}
-<script type="text/javascript" charset="utf-8">
-    $(document).ready(function() {
-        $('.licenselist').dataTable({
-            "sDom": "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>",
-            "iDisplayLength": 20,
-            "aLengthMenu": [[20, 50, -1], [20, 50, "All"]],
-            "sPaginationType": "bootstrap",
-            "bStateSave": true,
-            "aaSorting": [[4,'desc']]
-        });
-    } );
-</script>
+
 {% endblock %}
+
+<!-- page title -->
+{% block page_title %}<a href="{% url 'licenses.views.index' %}" class="navbar-brand" >Licenses</a>{% endblock %}
 
 {% block content %}
   {% with license_list=licenses list_title='Licenses' %}

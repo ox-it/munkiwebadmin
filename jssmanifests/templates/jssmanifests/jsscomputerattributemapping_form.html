@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block java_script %}
+{% load static %}
+<script type="text/javascript">
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+{% endblock java_script %}
+
+{% block extra_style %}
+<link rel="stylesheet" type="text/css" href="{% get_static_prefix %}css/jssmanifests.css" />
+{% endblock %}
+
+<!-- Page title -->
+{% block page_title %}<a href="{% url 'jssmanifests.views.index' %}" class="navbar-brand" >JSS Mappings</a>{% endblock %}
+
+{% block navbar-top_extensions %}
+{% comment %}
+<li id="list" class="sidebar-search hidden-xs">
+    <a href="#" id="list"><span class="glyphicon glyphicon-th-list"></span> List</a>
+</li>
+<li id="grid" class="sidebar-search hidden-xs">
+    <a href="#" id="grid"><span class="glyphicon glyphicon-th"></span> Grid</a>
+</li>
+{% endcomment %}
+{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-12 col-xs-12">
+      <h1>{{ object }}</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 col-xs-12">
+      <form action="" method="post">{% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Update" />
+      </form>
+    </div><!-- col-md-12 col-xs-12 -->
+  </div><!-- row -->
+{% endblock content %}

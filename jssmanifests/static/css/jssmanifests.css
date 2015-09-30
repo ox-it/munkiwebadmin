@@ -1,0 +1,26 @@
+/* 
+ * primary #428BCA - rgb(66, 139, 202)
+ * warning #f0ad4e - rgb(240, 173, 78)
+ * success #5CB85C - rgb(92, 184, 92)
+ * danger  #D9534F - rgb(217, 83, 79)
+ */
+ 
+table#dataTables-jssmappings tr.disabled {
+  color: #aaa;
+}
+table#dataTables-jssmappings tr.remove i.fa-remove:hover {
+  color: rgb(217, 83, 79);
+}
+div#actions .btn-edit:hover {
+  background-color: rgba(66, 139, 202, .5); /* based on primary */
+}
+div#actions .btn-disable:hover {
+  background-color: rgba(240, 173, 78, .5); /* based on warning */
+}
+div#actions .btn-enable:hover {
+  background-color: rgba(92, 184, 92, .5); /* based on success */
+}
+div#actions .btn-delete:hover {
+  background-color: rgba(217, 83, 79, .5); /* based on success */
+}
+

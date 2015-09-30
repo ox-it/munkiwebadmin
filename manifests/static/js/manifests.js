@@ -1,5 +1,50 @@
 /* Javascript for manifests/index template */
+$(document).ready(function() {
+    $('#SearchField').keyup(function(){
+        var filter = $(this).val();
+        var regExPattern = "gi";
+        var regEx = new RegExp(filter, regExPattern);
+        $('#listbig a').each(function(){     
+            if (
+                $(this).text().search(new RegExp(filter, "i")) < 0 &&
+                $(this).data('state').search(regEx) < 0 
+                ){
+                    $(this).hide();
+                } else {
+                    $(this).show();
+                }        
+        });
+    });
+    $('#SearchFieldMobile').keyup(function(){
+        var filter = $(this).val();
+        var regExPattern = "gi";
+        var regEx = new RegExp(filter, regExPattern);
+        $('#listsmall a').each(function(){     
+            if (
+                $(this).text().search(new RegExp(filter, "i")) < 0 &&
+                $(this).data('state').search(regEx) < 0 
+                ){
+                    $(this).hide();
+                } else {
+                    $(this).show();
+                }        
+        });
+    });
 
+    $('#SearchField').change(function(){
+        $('#SearchField').keyup();
+    });
+
+    $('#SearchFieldMobile').change(function(){
+        $('#SearchFieldMobile').keyup();
+    });
+});
+
+
+$(document).on('hidden.bs.modal', function (e) {
+    $(e.target).removeData('bs.modal');
+});
+	
 $(document).ajaxSend(function(event, xhr, settings) {
     function getCookie(name) {
         var cookieValue = null;
@@ -22,17 +67,7 @@ $(document).ajaxSend(function(event, xhr, settings) {
     }
 });
 
-$(document).ready(function(){
-    $('#manifest_list_table').dataTable({
-        "sDom": "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>",
-        "bPaginate": false,
-        "sScrollY": "480px",
-        "bScrollCollapse": true,
-        "bInfo": false,
-        "bFilter": false,
-        "bStateSave": true,
-        "aaSorting": [[0,'asc']]
-    });
+$(document).ready(function(){   
     $('a.manifest').click(function(){
         var manifest_name = $(this).attr('id');
         getManifestDetail(manifest_name);
@@ -81,9 +116,8 @@ function getManifestDetail(manifest_name) {
         });
         $("#imgProgress").hide();
     });
-    $('.manifest[id="' + manifest_name + '"]').addClass('selected');
-    $('.manifest[id!="' + manifest_name + '"]').removeClass('selected');
-    $('#delete_manifest').removeClass('disabled');
+    $('.manifest[id="' + manifest_name + '"]').addClass('active');
+    $('.manifest[id!="' + manifest_name + '"]').removeClass('active');
     //$('.lineitem_delete').on('click', function() {    
     //      var r = confirm("Really delete " + manifest_name + "?");
     //});
@@ -104,11 +138,11 @@ function makeEditableItems(manifest_name) {
         connectWith: '.section'
     });
     //replace <a> links with 'editable' divs
-    $('.lineitem').children($('a')).each(function(){
+    $('.entrys').children($('a')).each(function(){
         var item = "<div class='editable'>" + $(this).parent().attr('id') + "</div>";
         $(this).replaceWith(item);
     });
-    $('.lineitem').append("<a href='#' class='btn btn-danger btn-mini lineitem_delete'><i class='icon-minus icon-white'></i><a>");
+    $('.entrys').append("<span class='btn btn-danger lineitem_delete pull-right' style='margin-top:-16px;'></span>");
     $('.manifest_section').on('dblclick', '.editable', function() {
         makeEditableItem(manifest_name, autocomplete_data, $(this));
     });
@@ -120,9 +154,9 @@ function makeEditableItems(manifest_name) {
           $(this).parent().remove();
       }
     });
-    $('.section_label').append("<a class='btn btn-success btn-mini add_item' href='#'><i class='icon-plus icon-white'></i></a>");
+    $('.section_label').append("<a class='btn btn-success btn-mini add_item pull-right' href='#'></a>");
     $('.add_item').click(function() {
-        var list_item = $("<li class='lineitem'><div class='editable'></div><a href='#' class='btn btn-danger btn-mini lineitem_delete'><i class='icon-minus icon-white'></i><a></li>");
+        var list_item = $("<li class='list-group-item entrys'><span class='btn btn-danger btn-mini lineitem_delete pull-right' style='margin-top:4px;'></span><div class='editable'></div></li>");
         $(this).parent().siblings($('ul')).append(list_item);
         makeEditableItem(
             manifest_name, autocomplete_data, list_item.children(".editable"));
@@ -130,7 +164,7 @@ function makeEditableItems(manifest_name) {
     $('.edit').val('Save').unbind('click').click(function() {
         getManifestDetailFromDOMAndSave();
     });
-    $('#save_and_cancel').append("<input type='button' class='cancel btn' value='Cancel' onClick='cancelEdit()'></input>");
+    $('#save_and_cancel').append("<input type='button' class='cancel btn btn-default' value='Cancel' onClick='cancelEdit()'></input>");
     $(window).bind('beforeunload', function(){
         return "Changes will be lost!";
     });
@@ -236,4 +270,7 @@ function getManifestDetailFromDOMAndSave() {
       },
       dataType: 'json'
     });
+}
+
+function sideSecific() {
 }

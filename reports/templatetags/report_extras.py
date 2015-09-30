@@ -17,3 +17,13 @@ def humanreadablesize(kbytes):
         else:
             return str(round(kbytes/float(limit/2**10), 1)) + suffix
 humanreadablesize.is_safe = True
+
+@register.filter
+def replace(value):
+    value = value.replace ("_", " ")
+    value = value.title()
+    return value
+
+@register.filter(name='get')
+def get(d, k):
+    return d.get(k, None)

@@ -7,10 +7,15 @@ from django.core.urlresolvers import reverse
 from django.http import Http404
 #from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required, permission_required
+from django.contrib.auth.models import Permission
+from django.contrib.auth.models import User
 from django.conf import settings
 from django import forms
 from django.db.models import Q
 from django.db.models import Count
+
+from tokenapi.decorators import token_required
+from tokenapi.http import JsonResponse, JsonError
 
 import plistlib
 import base64
@@ -35,7 +40,7 @@ def decode_to_string(base64bz2data):
         return ''
 
 
-@csrf_exempt
+@token_required
 def submit(request):
     if request.method != 'POST':
         raise Http404
@@ -45,13 +50,13 @@ def submit(request):
         'com.apple.print.PrinterProxy'
     ]
     submission = request.POST
-    mac = submission.get('mac')
+    serial = submission.get('serial')
     machine = None
-    if mac:
+    if serial:
         try:
-            machine = Machine.objects.get(mac=mac)
+            machine = Machine.objects.get(serial_number=serial)
         except Machine.DoesNotExist:
-            machine = Machine(mac=mac)
+            machine = Machine(serial_number=serial)
     if machine:
         if 'hostname' in submission:
             machine.hostname = submission.get('hostname')
@@ -97,13 +102,13 @@ def submit(request):
     
     return HttpResponse("No inventory submitted.\n")
 
-
-def inventory_hash(request, mac):
+@token_required
+def inventory_hash(request, serial):
     sha256hash = ''
     machine = None
-    if mac:
+    if serial:
         try:
-            machine = Machine.objects.get(mac=mac)
+            machine = Machine.objects.get(serial_number=serial)
             inventory_meta = Inventory.objects.get(machine=machine)
             sha256hash = inventory_meta.sha256hash
         except (Machine.DoesNotExist, Inventory.DoesNotExist):
@@ -114,20 +119,24 @@ def inventory_hash(request, mac):
 
 
 @login_required
+@permission_required('inventory.can_view_inventory', login_url='/login/')
 def index(request):
     all_machines = Machine.objects.all()
-    return render_to_response('inventory/index.html',
-                              {'machines': all_machines,
+
+    c = RequestContext(request,{'machines': all_machines,
                                'user': request.user,
                                'page': 'inventory'})
+    c.update(csrf(request))
+    return render_to_response('inventory/index.html', c)
 
 
 @login_required
-def detail(request, mac):
+@permission_required('inventory.can_view_inventory', login_url='/login/')
+def detail(request, serial):
     machine = None
-    if mac:
+    if serial:
         try:
-            machine = Machine.objects.get(mac=mac)
+            machine = Machine.objects.get(serial_number=serial)
         except Machine.DoesNotExist:
             raise Http404
     else:
@@ -135,34 +144,22 @@ def detail(request, mac):
 
     machine = None
     try:
-        machine = Machine.objects.get(mac=mac)
+        machine = Machine.objects.get(serial_number=serial)
     except Machine.DoesNotExist:
         pass
         
     inventory_items = machine.inventoryitem_set.all()
     
-    # determine if the model description information should be shown
-    try:
-        MODEL_LOOKUP_ENABLED = settings.MODEL_LOOKUP_ENABLED
-    except:
-        MODEL_LOOKUP_ENABLED = False
-
-    # If enabled lookup the model description
-    additional_info = {}
-    if MODEL_LOOKUP_ENABLED and machine.serial_number:
-        additional_info['model_description'] = \
-            model_description_lookup(machine.serial_number)
-    
-    return render_to_response('inventory/detail.html',
-                             {'machine': machine,
-                              'inventory_items': inventory_items,
-                              'user': request.user,
-                              'additional_info': additional_info,
-                              'model_lookup_enabled': MODEL_LOOKUP_ENABLED,
-                              'page': 'inventory'})
+    c = RequestContext(request,{'machine': machine,
+                                'inventory_items': inventory_items,
+                                'user': request.user,
+                                'page': 'inventory'})
+    c.update(csrf(request))
+    return render_to_response('inventory/detail.html', c)
 
 
 @login_required
+@permission_required('inventory.can_view_inventory', login_url='/login/')
 def items(request):
     name = request.GET.get('name')
     version = request.GET.get('version')
@@ -194,6 +191,8 @@ def items(request):
         for item in items:
             instance = {}
             instance['mac'] = item.machine.mac
+            instance['name'] = name
+            instance['serial'] = item.machine.serial_number
             instance['hostname'] = item.machine.hostname
             instance['username'] = item.machine.username
             instance['version'] = item.version
@@ -202,15 +201,16 @@ def items(request):
             instance['path'] = item.path
             item_detail['instances'].append(instance)
         
-        return render_to_response(
-            'inventory/item_detail.html',
-            {'item_detail': item_detail,
-             'user': request.user,
-             'page': 'inventory'})
+        c = RequestContext(request,{'item_detail': item_detail,
+                                    'user': request.user,
+                                    'page': 'inventory'})
+        c.update(csrf(request))
+        return render_to_response('inventory/item_detail.html', c)
     else:
-        return render_to_response('inventory/items.html',
-                                  {'user': request.user,
-                                   'page': 'inventory'})
+        c = RequestContext(request,{'user': request.user,
+                                       'page': 'inventory'})
+        c.update(csrf(request))
+        return render_to_response('inventory/items.html', c)
 
 
 def items_json(request):
@@ -235,8 +235,7 @@ def items_json(request):
                      'versions': versions})
 
     # send it back in JSON format
-    return HttpResponse(json.dumps(rows),
-                        mimetype='application/json')
+    return HttpResponse(json.dumps(rows), content_type='application/json')
 
 
 def model_description_lookup(serial):

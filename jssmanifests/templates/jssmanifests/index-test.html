@@ -1,0 +1,23 @@
+<html>
+<head>
+   <title> Test Page for object permissions </title>
+</head>
+<body>
+<h1> Hello World </h1>
+
+<h3> Mappings </h3>
+<ul>
+{% for mapping in mappings %}
+   <li> {{mapping }} ({{ mapping.jsssite }} ) </li>
+{% endfor %}
+</ul>
+
+<h3> Sites </h3>
+<ul>
+{% for site in sites %}
+   <li> {{ site }} </li>
+{% endfor %}
+</ul>
+
+</body>
+</html>

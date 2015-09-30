@@ -12,7 +12,7 @@ then
 	exit 1
 fi
 
-BUNDLE_IDENTIFIER="com.googlecode.munki.munkiwebadmin-scripts"
+BUNDLE_IDENTIFIER="com.googlecode.munki.scripts"
 BUNDLE_VERSION=`date +"%Y.%m.%d"`
 
 BASE_DIR=`dirname "${0}"`
@@ -131,11 +131,11 @@ fi
 	--ownership preserve \
 	--identifier "${BUNDLE_IDENTIFIER}" \
 	--version "${BUNDLE_VERSION}" \
-	"munkiwebadmin_scripts-${BUNDLE_VERSION}.pkg"
+	"munkiscripts-${BUNDLE_VERSION}.pkg"
 
 if [ ! -z $SUDO_USER ]
 then
-	chown $SUDO_USER "munkiwebadmin_scripts-${BUNDLE_VERSION}.pkg"
+	chown $SUDO_USER "munkiscripts-${BUNDLE_VERSION}.pkg"
 fi
 
 
@@ -149,5 +149,5 @@ rm -rf "${BUILD_DIR}"
 rm -rf "${SCRIPTS_DIR}"
 
 echo
-echo "Finished building munkiwebadmin_scripts-${BUNDLE_VERSION}.pkg"
+echo "Finished building munkiscripts-${BUNDLE_VERSION}.pkg"
 echo 

@@ -2,7 +2,9 @@ from django.http import HttpResponse, HttpRequest, HttpResponseRedirect
 from django.template import RequestContext
 from django.shortcuts import render_to_response
 from django.core.context_processors import csrf
+from django.views.decorators.csrf import csrf_exempt
 from django.core.urlresolvers import reverse
+from django.http import Http404
 #from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.models import Permission
@@ -22,11 +24,9 @@ MANIFEST_USERNAME_KEY = settings.MANIFEST_USERNAME_KEY
 
 
 class NewManifestForm(forms.Form):
-    manifest_name = forms.CharField(max_length=120)
-    user_name = forms.CharField(max_length=120, required=False)
-    
-    error_css_class = 'error'
-    required_css_class = 'required'
+    manifest_name = forms.CharField(label='', widget=forms.TextInput(attrs={'class' : 'form-control', 'id' : 'error1'}), max_length=120)
+    #user_name = forms.CharField(max_length=120, required=False)
+    error_css_class = 'has-error'
     
     def clean_manifest_name(self):
         manifest_names = Manifest.list()
@@ -36,7 +36,7 @@ class NewManifestForm(forms.Form):
         
     
 @login_required
-@permission_required('reports.add_machine', login_url='/login/')
+@permission_required('manifests.add_manifests', login_url='/login/')
 def new(request):
     if request.method == 'POST': # If the form has been submitted...
         form = NewManifestForm(request.POST) # A form bound to the POST data
@@ -64,10 +64,8 @@ def new(request):
     
 
 @login_required
-@permission_required('reports.delete_machine', login_url='/login/')
+@permission_required('manifests.delete_manifests', login_url='/login/')
 def delete(request, manifest_name=None):
-    if not request.user.has_perm('reports.delete_machine'):
-        return HttpResponse(json.dumps('error'))
     if request.method == 'POST':
         Manifest.delete(manifest_name, request.user)
         return HttpResponseRedirect('/manifest/')
@@ -83,12 +81,13 @@ def getManifestInfo(manifest_names):
         m_dict = {}
         m_dict['name'] = name
         manifest = Manifest.read(name)
-        m_dict['user'] = manifest.get(MANIFEST_USERNAME_KEY, '')
+        #m_dict['user'] = manifest.get(MANIFEST_USERNAME_KEY, '')
         manifest_list.append(m_dict) 
     return manifest_list
 
 
 @login_required
+@permission_required('manifests.can_view_manifests', login_url='/login/') 
 def index(request, manifest_name=None):
     if request.method == 'GET':
         manifest_names = Manifest.list()
@@ -100,42 +99,24 @@ def index(request, manifest_name=None):
                                 'optional_installs']
         section = request.GET.get('section', 'manifest_name')
         findtext = request.GET.get('findtext', '')
-        #sort = request.GET.get('sort', 'name')
-        if findtext:
-            filtered_names = []
-            if section == 'manifest_name':
-                for name in manifest_names:
-                    basename = os.path.basename(name)
-                    if fnmatch.fnmatch(basename, findtext):
-                        filtered_names.append(name)
-            elif section == 'user_name':
-                for name in manifest_names:
-                    manifest = Manifest.read(name)
-                    if manifest:
-                        username = manifest.get(MANIFEST_USERNAME_KEY, '')
-                        if fnmatch.fnmatch(username, findtext):
-                            filtered_names.append(name)
-            else:
-                for name in manifest_names:
-                    manifest = Manifest.read(name)
-                    if manifest:
-                        for item in manifest.get(section, []):
-                            if fnmatch.fnmatch(item, findtext):
-                                filtered_names.append(name)
-                                break
-        
-            manifest_names = filtered_names
-        
+        sort = request.GET.get('sort', 'name')
+
         manifest_list = getManifestInfo(manifest_names)
         username = None
         manifest = None
         
+        manifest_list_josn = list()
+        for item in manifest_list:
+            manifest_list_josn.append(item['name'])
+        manifest_list_josn = json.dumps(manifest_list_josn)
+
         if manifest_name:
             manifest = Manifest.read(manifest_name)
             username = manifest.get(MANIFEST_USERNAME_KEY)
             manifest_name = manifest_name.replace(':', '/')
         c = RequestContext(request,     
             {'manifest_list': manifest_list,
+             'manifest_list_josn': manifest_list_josn,
              'section': section,
              'findtext': findtext,
              'available_sections': available_sections,
@@ -149,6 +130,7 @@ def index(request, manifest_name=None):
         
 
 @login_required
+@permission_required('manifests.can_view_manifests', login_url='/login/') 
 def view(request, manifest_name=None):
     return index(request, manifest_name)
 
@@ -156,7 +138,7 @@ def view(request, manifest_name=None):
 @login_required
 def detail(request, manifest_name):
     if request.method == 'POST':
-        if not request.user.has_perm('reports.change_machine'):
+        if not request.user.has_perm('manifests.change_manifests'):
             return HttpResponse(json.dumps('error'))
         if request.is_ajax():
             json_data = json.loads(request.body)
@@ -168,6 +150,8 @@ def detail(request, manifest_name):
                                request.user)
             return HttpResponse(json.dumps('success'))
     if request.method == 'GET':
+        if not request.user.has_perm('manifests.can_view_manifests'):
+            return HttpResponse(json.dumps('error'))
         manifest = Manifest.read(manifest_name)
         #valid_install_items = Manifest.getValidInstallItems(manifest_name)
         install_items = Manifest.getInstallItemNames(manifest_name)
@@ -198,3 +182,15 @@ def detail(request, manifest_name):
             'page': 'manifests'})
         c.update(csrf(request))
         return render_to_response('manifests/detail.html', c)
+
+@csrf_exempt
+def copymanifest(request):
+    if request.method != 'POST':
+        raise Http404
+    submit = request.POST
+    manifest_name = submit.get('manifest_name')
+    manifest_copy = submit.get('manifest_copy')
+
+    Manifest.copy(manifest_name, manifest_copy)
+
+    return HttpResponse("No report submitted.\n")

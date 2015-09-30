@@ -1,0 +1,23 @@
+---
+  - model: auth.Group
+    pk: 1000
+    fields:
+        name: Full Site Access
+  - model: auth.Group
+    pk: 1001
+    fields:
+        name: Test Site
+  - model: jssmanifests.JSSSite
+    pk: 1
+    fields:
+        jsssiteid: -1
+        jsssitename: Full Site Access
+        last_refresh: '2015-09-23 16:24:38'
+        group_id: 1000
+  - model: jssmanifests.JSSSite
+    pk: 2
+    fields:
+        jsssiteid: 1
+        jsssitename: Test site
+        last_refresh: '2015-09-23 16:24:38'
+        group_id: 1001

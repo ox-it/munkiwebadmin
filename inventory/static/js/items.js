@@ -54,15 +54,12 @@ $(document).ready(function()
     }
 
 
-    $("#inventory-items-table").dataTable({
+    oTable = $("#inventory-items-table").dataTable({
         "sAjaxSource": window.location.href + ".json",
         "fnServerData": process_json,
-        "iDisplayLength": 20,
-        "sPaginationType": "bootstrap",
-        "aLengthMenu": [[20, 50, -1], [20, 50, "All"]],
+        "paging":false,
         "bStateSave": true,
-        "bDeferRender": true,
-        "aaSorting": [[4,'desc']],
+        "aaSorting": [[1,'desc']],
         "aoColumns": [
             {'mData': 'name',
              'mRender': format_name_column
@@ -72,4 +69,25 @@ $(document).ready(function()
             }
         ]
     });
+
+    $('#SearchField').keyup(function(){
+        oTable.fnFilter( $(this).val() );       
+    });
+    $('#SearchFieldMobile').keyup(function(){
+        oTable.fnFilter( $(this).val() );    
+    });
+
+    $('#SearchField').change(function(){
+        $('#SearchField').keyup();
+    });
+
+    $('#SearchFieldMobile').change(function(){
+        $('#SearchFieldMobile').keyup();
+    });
 });
+
+function sideSecific() {
+}
+
+function setview() {
+}

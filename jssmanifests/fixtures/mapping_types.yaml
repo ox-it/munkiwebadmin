@@ -1,0 +1,34 @@
+---
+  - model: jssmanifests.JSSComputerAttributeType
+    pk: 1
+    fields:
+        label: Extension Attribute
+        computer_xpath: '//computer/extension_attributes/extension_attribute[name=$key]/value/text()'
+        api_path: '/api/url'
+        xpath_needs_key: true
+  - model: jssmanifests.JSSComputerAttributeType
+    pk: 2
+    fields:
+        label: 'Site'
+        computer_xpath: '//computer/general/site/name/text()'
+        api_path: '/JSSResource/sites'
+        api_xpath: '/JSSResource/sites'
+  - model: jssmanifests.JSSComputerAttributeType
+    pk: 3
+    fields:
+        label: 'Department'
+        computer_xpath: '//computer/location/department/text()'
+        api_path: '/api/url'
+  - model: jssmanifests.JSSComputerAttributeType
+    pk: 4
+    fields:
+        label: 'Building'
+        computer_xpath: '//computer/location/building/text()'
+        api_path: '/api/url'
+  - model: jssmanifests.JSSComputerAttributeType
+    pk: 5
+    fields:
+        label: 'Group'
+        computer_xpath: '//computer/groups_accounts/computer_group_memberships/group/text()'
+        api_path: '/api/url'
+        xpath_needs_key: false
