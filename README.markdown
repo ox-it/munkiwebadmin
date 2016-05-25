@@ -8,4 +8,4 @@ The code is in production in our environment since mid 2015. We are actively mai
 
 Please find some set-up notes for the dynamicc manifests based on JSS inventory within the [JSS manifests application's README.md](https://github.com/ox-it/manana/blob/master/jssmanifests/README.md)
 
-[Marko's](https://github.com/mjung/) [presentation at MacAD UK 2016](https://github.com/mjung/publications/tree/master/2016-02-29_MacAdUK) provides an overview of the workflow beginning with slide 35.
+[Marko's](https://github.com/mjung/) [presentation at MacAD UK 2016](https://github.com/mjung/publications/tree/master/2016-02-09_MacAdUK) provides an overview of the workflow beginning with slide 35.
