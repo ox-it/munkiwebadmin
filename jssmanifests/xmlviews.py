@@ -6,6 +6,7 @@ from django.conf import settings
 from operator import attrgetter
 
 import re
+import sys
 
 from manifests.models import Manifest
 
@@ -16,6 +17,15 @@ import jss
 import plistlib
 
 def manifest(request, manifest_name):
+
+    # This allows use to cut down the size of the the information
+    # retrieved from the JSS (and thus the memory requirements, and
+    # speed of processing)
+    try:
+        computer_record_sections = settings.JSS_COMPUTER_RECORD_SECTIONS
+    except AttributeError:
+        computer_record_sections = ['general', 'location',
+                                    'extensionattributes', 'groupsaccounts']
 
     if request.method == 'GET':
 
@@ -31,7 +41,24 @@ def manifest(request, manifest_name):
                                  url=settings.JSS_URL,
                                  ssl_verify=settings.JSS_VERIFY_CERT)
 
-            jcomputer = jss_connection.Computer('udid=%s' % manifest_name.upper())
+            try:
+                search_term ='udid=%s' % manifest_name.upper()
+                jcomputer = jss_connection.Computer(search_term,
+                                                    computer_record_sections)
+            except jss.JSSGetError as e:
+                # Log error to apache logs ... this works, but is naff
+                sys.stderr.write('Missing UDID: %s (JSS Says: %s)\n' 
+                                  % (manifest_name.upper(), e))
+
+                # Send back site default manifest
+                response = HttpResponse(content_type='application/xml')
+                plistlib.writePlist(manifest, response)
+
+                if settings.JSSMANIFESTS_DOWNLOAD_AS_ATTACHMENT:
+                    response['Content-Disposition'] = "attachment; filename=%s" % udid
+                return response
+
+
             computer = etree.fromstring(jcomputer.__str__())
        
             if settings.JSSMANIFESTS_DEBUG_DUMPJSSEA:
