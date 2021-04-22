@@ -146,9 +146,9 @@ class JSSComputerAttributeMapping(models.Model):
 
         if self.manifest_element_type == 'p':
             type    = 'package'
-            element = '"%s %s %s' % ( self.package_name, 'from' if self.remove_from_xml else 'to',self.package_action)
+            element = '"%s" %s %s' % (self.package_name, 'from' if self.remove_from_xml else 'to', self.package_action)
 
-        return '%s: %s' % (type, element)     
+        return '%s %s' % (type, element)     
 
     def is_in_site(self,site):
         if not self.site or self.site == site:
